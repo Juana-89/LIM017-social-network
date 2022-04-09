@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Lobster&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Bebas Neue', cursive;
 }
 .show_home_page{
     position: relative;
@@ -19,16 +19,142 @@
     overflow: hidden;
 }
 .container_video video{
-    position: relative;
-    top: 50%;left: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
-    opacity: 0.8;
-    mix-blend-mode: overlay; 
+    min-width: 100%;
+    min-height: 100%;
 }
-.container_form{
+.h1_welcome0{
+    /*texto en medio de la página*/
+    font-size: 120px;
+    position: absolute;
+    text-align: center;
+    background: radial-gradient(#000, #F5431D, #E86626, #E8DF26);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    top:40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-shadow: 5px 5px  rgba(255, 252, 252, 0.9);
+    	-webkit-animation: slide-in-elliptic-down-fwd 4s cubic-bezier(0.985, 0.135, 0.750, 0.860);
+	        animation: slide-in-elliptic-down-fwd 4s cubic-bezier(0.985, 0.135, 0.750, 0.860);
+}
+.h1_welcome1{
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    border:#000;
+    color:#fff;
+    position: absolute;
+    top:57%;
+    left: 50%;
+  
+    transform: translateX(-50%) translateY(-50%);
+    text-shadow: 5px 5px  rgba(0, 0, 0, 0.9);
+    -webkit-animation: slide-in-elliptic-down-fwd 7s cubic-bezier(0.985, 0.135, 0.750, 0.860);
+    animation: slide-in-elliptic-down-fwd 7s cubic-bezier(0.985, 0.135, 0.750, 0.860);
+}
+.btn_start{
+    font-size: 20px;
+    position: absolute;
+    border: none;
+    border-radius: 24px;
+    background: #FE2E2E;
+    color: white;
+    box-shadow: 5px 5px  rgba(0, 0, 0, 0.9);
+    top:72%;
+    left: 50%;
+    right: 50%;
+    width:100px;
+    height:50px;
+    cursor:pointer;
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-animation: slide-in-elliptic-down-fwd 7s cubic-bezier(0.985, 0.135, 0.750, 0.860);
+    animation: slide-in-elliptic-down-fwd 7s cubic-bezier(0.985, 0.135, 0.750, 0.860);
+}
+@-webkit-keyframes slide-in-elliptic-down-fwd {
+    0% {
+      -webkit-transform: translateY(-50%) rotateX(-50%) scale(0);
+              transform: translateY(-50%) rotateX(-50%) scale(0);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(-50%) rotateX(-50%) scale(1);
+              transform: translateY(-50%) rotateX(-50%) scale(1);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+      opacity: 1;
+    }
+  }
+
+.container_form {
+    /* background: #191919; */
+    opacity: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /*esconde el scroll*/
+}
+.form_info{
+    margin:100px;
+    background: #191919;
+    width: 300px;
+    height: 400px;
+    padding: 40px;
+    text-align: center;
+}
+.form_h1_title{
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.form_h3_pie{
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+}
+.form_inp{
+    background: none;
+    display:block;
+    margin: 20px auto;
+    text-align: center;
+    border:3px solid #FE2E2E;
+    padding: 10px 8px;
+    width: 200px;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+.form_inp:focus {
+    border:0;
+    width: 230px;
+    border-color: #ffffff;
+}
+.form_btn{
+    border: 0;
+    background: #5352ed;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px 40px;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.form_btn:hover {
+    background: #FA5858;
+}
+  /*
+.h1_welcome{
+    visibility: hidden;
+}
+.form_input{
+    visibility: hidden;
+}*/
+/* .container_form{
     
     font-size: 20px;
     position: relative;
@@ -39,14 +165,14 @@
     width: 60%;
     margin: auto;
     z-index: 2;
-}
-
+} */
+/* 
 .h1_welcome{
     padding: 150px;
 }
 .div_footer{
     position: absolute;
-}
+} */
 
 /* .footer{
     z-index:1;
@@ -54,7 +180,6 @@
     margin-top: -30px;
     position: absolute;
 }
-
 .img_footer{
     z-index:-1;
     position: relative;
