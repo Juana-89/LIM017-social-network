@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Lobster&display=swap');
+/* @import url('./css/movil.css'); */
+/*@import url("./css/tablets.css"); */
+
 *{
     margin: 0;
     padding: 0;
@@ -147,8 +150,73 @@
 .form_btn:hover {
     background: #FA5858;
 }
-  /*
-.h1_welcome{
+
+@media only screen and (min-width: 768px) and (max-width: 970px) {
+    .container_video video{
+       width: auto;
+    height: auto;
+    }
+    .h1_welcome0{
+        top: 28%;
+    }
+    .h1_welcome1 {
+        top: 50%;
+    }
+    .btn_start {
+        top: 65%;
+}
+.form_info{
+    margin: 50%;
+}   
+}
+@media only screen and (min-width: 360px) and (max-width: 767px){
+    .container_video video{
+    width: auto;
+    height: auto;
+    }
+    .h1_welcome0{
+        top: 20%;
+        font-size: 65px;
+    }
+    .h1_welcome1 {
+        top: 48%;
+        font-size: 23px;
+    }
+    .btn_start {
+        top: 69%;
+}
+    .form_info{
+    margin: 50%;
+}
+}
+/*galaxy fold*/
+@media only screen and (min-width: 280px) and (max-width: 359px){
+    .container_video video{
+    width: auto;
+    height: auto;
+    }
+    .h1_welcome0{
+        top: 20%;
+        font-size: 50px;
+    }
+    .h1_welcome1 {
+        top: 47%;
+        font-size: 20px;
+        text-align: justify;
+    }
+    .btn_start {
+        top: 70%;
+        width: 80px;
+        height: 40px;
+}
+    .form_info{
+    margin: 50%;
+}
+.form_h1_title{
+    font-size: 20px;
+}
+}
+/*.h1_welcome{
     visibility: hidden;
 }
 .form_input{
