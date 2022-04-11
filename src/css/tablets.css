@@ -1,0 +1,18 @@
+/*Medidas para tablets de 768x1024*/
+@media only screen and (min-width: 768px) and (max-width: 984px) {
+    .container_video video{
+        display: flex;
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .h1_welcome0{
+        top: 28%;
+    }
+    .h1_welcome1 {
+        top: 58%;
+        color:red;
+    }
+    .btn_start {
+        top: 75%;
+}
+}

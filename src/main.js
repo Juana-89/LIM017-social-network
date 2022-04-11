@@ -6,7 +6,6 @@
 //   textBienvenida.style.display = 'none';
 // };
 // setTimeout(disappearText, 9000);
-
 const btnStart = document.querySelector('.btn_start');
 const mainFirstPage = document.querySelector('.show_home_page');
 
