@@ -190,7 +190,7 @@
 }
 }
 /*galaxy fold*/
-@media only screen and (max-width: 280px) and (max-width: 359px){
+@media only screen and (min-width: 280px) and (max-width: 359px){
     .container_video video{
     width: auto;
     height: auto;
@@ -201,7 +201,8 @@
     }
     .h1_welcome1 {
         top: 47%;
-        font-size: 20px
+        font-size: 20px;
+        text-align: justify;
     }
     .btn_start {
         top: 70%;
