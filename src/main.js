@@ -24,9 +24,10 @@ export const onNavigate = (pathname) => {
     pathname,
     window.location.origin + pathname,
   );
+  mainFirstPage.innerHTML = '';
+
   mainFirstPage.appendChild(routes[pathname]());
 };
-
 const component = routes[window.location.pathname];
 mainFirstPage.appendChild(component());
 
