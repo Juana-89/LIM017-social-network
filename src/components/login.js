@@ -1,6 +1,5 @@
 export const login = () => {
 //   const btnStart = document.querySelector('.btn_start');
-  
 
   //   btnStart.addEventListener('click', firstPage);
   //   function firstPage() {
