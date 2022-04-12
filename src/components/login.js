@@ -1,6 +1,6 @@
 export const login = () => {
 //   const btnStart = document.querySelector('.btn_start');
-  const mainFirstPage = document.querySelector('.show_home_page');
+  
 
   //   btnStart.addEventListener('click', firstPage);
   //   function firstPage() {
@@ -15,6 +15,6 @@ export const login = () => {
   <h3 class="form_h3_pie">¿Olvidaste tu contraseña?</h3>
   <h3 class="form_h3_pie">Crear cuenta</h3>
   </form> `;
-  mainFirstPage.appendChild(divForm);
-  return mainFirstPage;
+  return divForm ;
+
 };
