@@ -19,6 +19,7 @@ const routes = {
 };
 
 export const onNavigate = (pathname) => {
+  // document.querySelector('.container_welcome').style.display = 'none';
   window.history.pushState(
     {},
     pathname,
@@ -27,7 +28,11 @@ export const onNavigate = (pathname) => {
   mainFirstPage.appendChild(routes[pathname]());
 };
 
+// guarda el historial de navegación del usuario mediante las flechas
 const component = routes[window.location.pathname];
+window.onpopstate = () => {
+  mainFirstPage.appendChild(component());
+};
 mainFirstPage.appendChild(component());
 
 // const btnStart = document.querySelector('.btn_start');
