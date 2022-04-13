@@ -10,6 +10,7 @@
 import { welcome } from './components/home.js';
 import { login } from './components/login.js';
 import { register } from './components/register.js';
+import { forgot } from './components/forgot_password.js';
 
 const mainFirstPage = document.querySelector('.show_home_page');
 
@@ -17,7 +18,7 @@ const routes = {
   '/': welcome,
   '/login': login,
   '/register': register,
-
+  '/forgot': forgot,
 };
 
 export const onNavigate = (pathname) => {

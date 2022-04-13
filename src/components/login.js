@@ -14,6 +14,7 @@ export const login = () => {
     <h3 id="btn_create_user" class="form_h3_pie">Crear cuenta</h3>
     </form> `;
 
+    divForm.querySelector('#btn_forgot_password').addEventListener('click', () => onNavigate('/forgot')); 
     divForm.querySelector('#btn_create_user').addEventListener('click', () => onNavigate('/register')); 
   
     return divForm;
