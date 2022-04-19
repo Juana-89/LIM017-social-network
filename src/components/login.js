@@ -1,4 +1,4 @@
-import { signInGmail } from '../.firebase/auth.js';
+import { signInGmail, signInFacebook } from '../.firebase/auth.js';
 import { onNavigate } from '../main.js';
 
 
@@ -23,6 +23,11 @@ export const login = () => {
 //Iniciar sesión con Gmail
 divForm.querySelector('#login_gmail').addEventListener('click', () => {
 signInGmail();
+});
+
+//Iniciar sesión con Facebook
+divForm.querySelector('#login_facebook').addEventListener('click', () => {
+signInFacebook();
 });
 
 return divForm;
