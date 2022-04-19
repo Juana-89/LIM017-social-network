@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+/* eslint-disable import/no-cycle */
 import { onNavigate } from '../main.js';
 
 export const welcome = () => {

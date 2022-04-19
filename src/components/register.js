@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { onNavigate } from '../main.js';
 
 export const register = () => {
@@ -17,7 +18,7 @@ export const register = () => {
     <h3 id="btn_forgot_user" class="form_h3_pie">¿Tienes cuenta?</h3>
     <input type="button" class="form_btn" value ="Regístrate"/>`;
 
-divRegister.querySelector("#btn_forgot_user").addEventListener('click', () => onNavigate('/login')); 
+  divRegister.querySelector('#btn_forgot_user').addEventListener('click', () => onNavigate('/login'));
 
   return divRegister;
 };
