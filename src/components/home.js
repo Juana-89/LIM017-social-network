@@ -15,7 +15,7 @@ export const welcome = () => {
 
   const h1Welcome1 = document.createElement('h1');
   h1Welcome1.classList.add('h1_welcome1');
-  h1Welcome1.innerHTML = 'Bienvenid@ a la red social favorita en danzas folklóricas peruanas y podrás encontrar la información que necesitas';
+  h1Welcome1.innerHTML = 'Bienvenid@ a la red social favorita en danzas folklóricas peruanas donde podrás encontrar la información que necesitas.';
 
   const btnStart = document.createElement('button');
   btnStart.classList.add('btn_start');

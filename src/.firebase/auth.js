@@ -7,6 +7,6 @@ export const signInGmail = () => {
     return signInWithPopup(auth, new GoogleAuthProvider());
   };
 
-  export const signInFacebook = () => {
+export const signInFacebook = () => {
     return signInWithPopup(auth, new FacebookAuthProvider());
   };

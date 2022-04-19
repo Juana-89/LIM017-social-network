@@ -1,7 +1,6 @@
 import { signInGmail, signInFacebook } from '../.firebase/auth.js';
 import { onNavigate } from '../main.js';
 
-
 export const login = () => {
     const divForm = document.createElement('div');
     divForm.classList.add('container_form');
@@ -19,16 +18,15 @@ export const login = () => {
     divForm.querySelector('#btn_forgot_password').addEventListener('click', () => onNavigate('/forgot')); 
     divForm.querySelector('#btn_create_user').addEventListener('click', () => onNavigate('/register')); 
 
-
 //Iniciar sesión con Gmail
-divForm.querySelector('#login_gmail').addEventListener('click', () => {
-signInGmail();
-});
+    divForm.querySelector('#login_gmail').addEventListener('click', () => {
+    signInGmail();
+    });
 
 //Iniciar sesión con Facebook
-divForm.querySelector('#login_facebook').addEventListener('click', () => {
-signInFacebook();
-});
+    divForm.querySelector('#login_facebook').addEventListener('click', () => {
+    signInFacebook();
+    });
 
 return divForm;
 };
