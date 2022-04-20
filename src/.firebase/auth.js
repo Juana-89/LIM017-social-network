@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider,  signInWithPopup, } from '../.firebase/index.js';
+import { getAuth, GoogleAuthProvider, FacebookAuthProvider,  signInWithPopup, signInWithEmailAndPassword } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth();
