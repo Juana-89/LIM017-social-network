@@ -1,5 +1,5 @@
-import { signInGmail, signInFacebook } from '../.firebase/auth.js';
-// import { getAuth, signInWithEmailAndPassword } from '../.firebase/index.js';
+import { signInGmail, signInFacebook, signInUser } from '../.firebase/auth.js';
+// import { getAuth } from '../.firebase/index.js';
 import { onNavigate } from '../main.js';
 
 export const login = () => {
@@ -30,25 +30,12 @@ export const login = () => {
     });
 
 //Acceso de usuarios existentes
-divForm.querySelector('.form_info').addEventListener('submit', e => {
-e.preventDefault();
-const email = document.querySelector('#inp_email').value;
-const password = document.querySelector('#inp_password').value;
-console.log(email, password);
-
-const auth = getAuth();
-
-   signInWithEmailAndPassword(email, password)
-    .then(userCredential => {
-        const user = userCredential.user;
-      // Signed in 
+    divForm.querySelector('.form_info').addEventListener('submit', e => {
+    e.preventDefault();
+    const emailUserRegister = document.querySelector('#inp_email').value;
+    const passwordUserRegister = document.querySelector('#inp_password').value;
+    signInUser(emailUserRegister, passwordUserRegister);
+    });
     
-          alert('Usuario existe')
-      })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //   });
-    })
 return divForm;
 };
