@@ -269,6 +269,7 @@
 .form_h3_pie:hover{
     color: #FE2E2E;
     cursor:pointer;
+    text-decoration: underline;
 }
 
 .container_register {
