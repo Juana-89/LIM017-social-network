@@ -1,5 +1,4 @@
 import { signInGmail, signInFacebook, signInUser } from '../.firebase/auth.js';
-// import { getAuth } from '../.firebase/index.js';
 import { onNavigate } from '../main.js';
 
 export const login = () => {

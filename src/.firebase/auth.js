@@ -17,7 +17,6 @@ export const signInUser = (email, password) => {
       .then(userCredential => {
            alert("Entraste!");
            console.log("Entraste!", userCredential.user)
-          // Signed in 
       })
       .catch((error) => {
             alert(error.message);
@@ -35,12 +34,12 @@ export const createNewUser = () => {
     
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-  // Signed in
       const user = userCredential.user;
       setDoc(doc(db, 'users/' + user.uid),{
         username: username,
         realname: realname,
-        email: email
+        email: email,
+        password: password
       });
       alert("registrado!",  userCredential.user);
       })
@@ -48,6 +47,5 @@ export const createNewUser = () => {
         const errorMessage = error.message;
         alert(errorMessage);
         return false;
-        // ..
       });
 }
