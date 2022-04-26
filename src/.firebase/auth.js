@@ -1,4 +1,4 @@
-import { getAuth, getFirestore, setDoc, doc, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../.firebase/index.js';
+import { getAuth, getFirestore, setDoc, doc, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);
@@ -27,13 +27,13 @@ export const signInUser = (email, password) => {
   }
 
 export const createNewUser = () => {
-      const username = document.querySelector('#inp_name_user').value;
-      const realname = document.querySelector('#inp_realname').value;
-      const email = document.querySelector('#inp_email').value;
-      const password = document.querySelector('#inp_password1').value;
+    const username = document.querySelector('#inp_name_user').value;
+    const realname = document.querySelector('#inp_realname').value;
+    const email = document.querySelector('#inp_email').value;
+    const password = document.querySelector('#inp_password1').value;
     
-      createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
       const user = userCredential.user;
       setDoc(doc(db, 'users/' + user.uid),{
         username: username,
@@ -42,11 +42,26 @@ export const createNewUser = () => {
         password: password
       });
       alert("¡Registrado! Ahora formas parte de nuestra comunidad",  userCredential.user);
-      })
-      .catch((error) => {
+    })
+    .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode + errorMessage);
         return false;
+    });
+}
+
+export const sendEmailForgotPassword = (email) =>{
+      auth.languageCode = 'es';
+      sendPasswordResetEmail(auth, email)
+      .then(() => {
+      console.log('Enviado, revísalo!', email);
+      alert('Enviado, revísalo!', email);
+      })
+      .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert (errorCode + errorMessage )
+      return false;
       });
 }

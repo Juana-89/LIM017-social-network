@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { onNavigate } from '../main.js';
 import { createNewUser } from '../.firebase/auth.js';
 import { validationForm } from '../lib/validation.js';
@@ -48,22 +49,22 @@ export const register = () => {
     <div class="form_message">
     <i class="fa-solid fa-triangle-exclamation"></i>
     <p class="form_p_message_warning">Error: Rellena los campos correctamente</p>
-    </div>
-   `;
+    </div>`;
 
+  // Validación de inputs
   divRegister.querySelector('#btn_forgot_user').addEventListener('click', () => onNavigate('/login'));
   const inputs = divRegister.querySelectorAll('#form_create_user input');
 
-  //Validación de inputs
   inputs.forEach((input) => {
     input.addEventListener('keyup', validationForm);
     input.addEventListener('blur', validationForm);
-  })
-  //Creación de nuevo usuario
+  });
+
+  // Creación de nuevo usuario
   divRegister.querySelector('#btn_submit').addEventListener('click', (e) => {
     e.preventDefault();
     createNewUser();
   });
-    
-return divRegister;
+
+  return divRegister;
 };

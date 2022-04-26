@@ -15,21 +15,21 @@ export const login = () => {
     <h3 id="btn_create_user" class="form_h3_pie">Crear cuenta</h3>
     </form> `;
 
-    divForm.querySelector('#btn_forgot_password').addEventListener('click', () => onNavigate('/forgot')); 
-    divForm.querySelector('#btn_create_user').addEventListener('click', () => onNavigate('/register')); 
+    divForm.querySelector('#btn_forgot_password').addEventListener('click', () => onNavigate('/forgot'));
+    divForm.querySelector('#btn_create_user').addEventListener('click', () => onNavigate('/register'));
 
-    //Iniciar sesión con Gmail
+    // Iniciar sesión con Gmail
     divForm.querySelector('#login_gmail').addEventListener('click', () => {
     signInGmail();
     });
 
-    //Iniciar sesión con Facebook
+    // Iniciar sesión con Facebook
     divForm.querySelector('#login_facebook').addEventListener('click', () => {
     signInFacebook();
     });
 
-    //Acceso de usuarios existentes
-    divForm.querySelector('.form_info').addEventListener('submit', e => {
+    // Acceso de usuarios existentes
+    divForm.querySelector('.form_info').addEventListener('submit', (e) => {
     e.preventDefault();
     const emailUserRegister = document.querySelector('#inp_email').value;
     const passwordUserRegister = document.querySelector('#inp_password').value;
