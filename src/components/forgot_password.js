@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { initializeApp } from '../.firebase/index.js';
 import { getAuth, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 import { onNavigate } from '../main.js';
@@ -33,7 +32,7 @@ export const forgot = () => {
  divForgotPassword.querySelector('#btn_submit').addEventListener('click', (e) => {
    e.preventDefault;
 const email = document.querySelector('#inp_email_forgot').value;
-const auth = getAuth();
+const auth = getAuth(app);
 auth.languageCode = 'es';
 
 sendPasswordResetEmail(auth, email)
@@ -45,7 +44,6 @@ sendPasswordResetEmail(auth, email)
 
     console.log('Enviado, revísalo!', email);
     alert('Enviado, revísalo!', email);
-    return true;
     // ...
   })
   .catch((error) => {

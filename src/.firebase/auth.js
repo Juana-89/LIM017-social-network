@@ -6,25 +6,25 @@ const db = getFirestore(app);
 
 export const signInGmail = () => {
     return signInWithPopup(auth, new GoogleAuthProvider());
-  };
+  }
 
 export const signInFacebook = () => {
     return signInWithPopup(auth, new FacebookAuthProvider());
-  };
+  }
 
 export const signInUser = (email, password) => {
-       signInWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-           alert("Entraste!");
-           console.log("Entraste!", userCredential.user)
-      })
-      .catch((error) => {
-            alert(error.message);
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            return false;
-          });
-      }
+    signInWithEmailAndPassword(auth, email, password)
+    .then(userCredential => {
+      alert("¡Entraste con éxito!");
+      console.log("¡Entraste con éxito!", userCredential.user)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorCode + errorMessage);
+      return false;
+    });
+  }
 
 export const createNewUser = () => {
       const username = document.querySelector('#inp_name_user').value;
@@ -41,11 +41,12 @@ export const createNewUser = () => {
         email: email,
         password: password
       });
-      alert("registrado!",  userCredential.user);
+      alert("¡Registrado! Ahora formas parte de nuestra comunidad",  userCredential.user);
       })
       .catch((error) => {
+        const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        alert(errorCode + errorMessage);
         return false;
       });
 }

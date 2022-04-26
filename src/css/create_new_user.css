@@ -1,0 +1,74 @@
+
+.form_group_info_user{
+    position:relative;
+}
+
+.fa-triangle-exclamation{
+    color:#FBE50D;
+    position:absolute;
+    left:35px;
+    z-index:3;
+}
+
+.form_message{
+    display:none;
+}
+
+.form_group_input{
+    position:relative;
+}
+
+.form_input_error{
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    font-size: 10px;
+    margin-bottom:0;
+    display:none;
+}
+
+.form_input_error-active{
+    display:block;
+}
+
+.form_p_message_warning-active{
+    display:block;
+    background-color:#FB1F0D;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    top: 380px;
+    right: 5px;
+    left: 5px;
+}
+
+.form_p_message_create_newuser-active{
+    display:block;
+    background-color:#33e942;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    top: 380px;
+    right: 5px;
+    left: 5px;
+}
+
+ .form_ico_state{
+    position: absolute;
+    right:10px;
+    bottom:5px;
+    z-index:3;
+    opacity:0;
+ }
+   
+/*Validaciones para que el icono cambie de color*/
+.form_group_info_user-correct #form_ico_state_good {
+    color:#0DFF56;
+    opacity:1;
+}
+.form_group_info_user-incorrect #form_ico_state_bad{
+    color:#DE1F16;
+    opacity:1;
+    
+}
