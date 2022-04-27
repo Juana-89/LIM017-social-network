@@ -8,7 +8,7 @@ export const login = () => {
     <h1 class="form_h1_title">Inicia sesión</h1>
     <input type="email" id="inp_email" class="form_inp" placeholder="Correo electrónico" required/>
     <input type="password" id="inp_password" class="form_inp" placeholder="Contraseña" required/>
-    <button type="submit" class="form_btn">Loguéate</button>
+    <button type="submit" id="btn_login_user" class="form_btn">Loguéate</button>
     <div id="login_gmail" class="label_rrss"><img class="ico_google" src ="./media/google.png"><h3 class="form_h3_pie_rrss">Continuar con tu Gmail</h3></div>
     <div id="login_facebook" class="label_rrss"><img class="ico_facebook" src ="./media/facebook.png"><h3 class="form_h3_pie_rrss">Continuar con Facebook</h3></div>
     <h3 id="btn_forgot_password" class="form_h3_pie">¿Olvidaste tu contraseña?</h3>
@@ -34,6 +34,7 @@ export const login = () => {
     const emailUserRegister = document.querySelector('#inp_email').value;
     const passwordUserRegister = document.querySelector('#inp_password').value;
     signInUser(emailUserRegister, passwordUserRegister);
+    divForm.querySelector('#btn_login_user').addEventListener('click', () => onNavigate('/navigation'));
     });
     
 return divForm;

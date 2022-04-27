@@ -5,6 +5,7 @@ import { welcome } from './components/home.js';
 import { login } from './components/login.js';
 import { register } from './components/register.js';
 import { forgot } from './components/forgot_password.js';
+import { navigation } from './components/navigation.js';
 // {Import the functions you need from the SDKs you need}
 
 const mainFirstPage = document.querySelector('.show_home_page');
@@ -14,6 +15,7 @@ const routes = {
   '/login': login,
   '/register': register,
   '/forgot': forgot,
+  '/navigation': navigation,
 };
 
 export const onNavigate = (pathname) => {

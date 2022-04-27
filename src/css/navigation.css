@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&family=Fjalla+One&family=Teko&family=Yanone+Kaffeesatz&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    background: #FC3939;
+}
+
+#header_navigation_profile{
+    display:flex;
+    background-color: #000;
+    width: auto;
+    height: 3em;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+}
+.logo{
+    display:flex;
+    align-items: center;
+}
+.logo img {
+    height: 45px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.name_logo{
+    color: #fffbf4;
+    font-family: 'Square Peg', cursive;
+    font-size: 30px;
+    cursor: pointer;
+}
+.li_header{
+
+    list-style: none;
+    float: right;
+}
+
+.nav_a_link{
+    font-family: 'Teko', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px;
+}
+.nav_a_link:hover{
+    color: #d40704;
+    transition: all 0.5s;
+}
+#btn_logout{
+    cursor: pointer;
+}
+
+
+.btn-bar{
+    float: right;
+    line-height: 50%;
+    color: #fff;
+    margin-right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    display:none;
+}
+#check{
+    display:none;
+}
+
+/*aside profile de photo user*/
+picture {
+    display: flex;
+    position: relative;
+}
+.img_photo_user{ 
+    margin-top:70px;
+    margin-left:155px;
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    border: 8px solid #fff;
+}
+.btn_edit_photo{
+   position: absolute;
+    left: 390px;
+    top: 252px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+.fa-camera{
+    font-size: 25px;
+}
+#article_profile_user #h3_perfil{
+background-color: #fff;
+border-radius: 10%;
+width: 150px;
+height: 150px;
+font-family: 'Fjalla One', sans-serif;
+}
+/*ventana navigation del user*/
+@media only screen and (min-width: 360px) and (max-width: 800px){
+    .btn-bar{
+        display:block;
+    }
+    .name_logo{
+        display:none;
+    }
+    .nav_a_link{
+        display:block;
+        padding: 10px;
+    }
+    .nav_a_link:hover{
+        color: #ffd7f4;
+    }
+    .nav_ul_link{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #81081a;
+        left: -100%;
+        top:48px;
+        text-align: center;
+        transition: all .5s;
+    }
+    #check:checked ~ .nav_ul_link{
+        left:0;
+    }
+
+    .img_photo_user{ 
+        margin-top:20px;
+        margin-left:15px;
+    }
+    .btn_edit_photo{
+        position: absolute;
+        left: 130px;
+        top: 122px;
+        width: 40px;
+        height: 40px;
+    }
+    .img_photo_user{ 
+        width: 160px;
+        height: 160px;
+}
+}
