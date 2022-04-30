@@ -23,6 +23,13 @@ export const navigation = () => {
     </ul>
     </nav>`;
 
+  const cover = document.createElement('div');
+  cover.setAttribute('id', 'div_cover');
+  cover.innerHTML = `<input type="file" id="file_cover" name="file" >
+  <button class="btn_edit_cover">
+  <i class="fa-solid fa-camera-retro"></i>Editar foto de portada</button>
+  `;
+
   const profile = document.createElement('section');
   profile.setAttribute('id', 'section_profile_user');
 
@@ -31,6 +38,7 @@ export const navigation = () => {
   photo.innerHTML = `<div class="div_aside_photo_user">
     <picture>
     <img class="img_photo_user" src="./media/foto_ejem.jpg">
+    <input type="file" id="file_photo" name="file_photo" >
     <button type="button" class="btn_edit_photo">
     <i class="fa-solid fa-camera"></i>
     </picture>`;
@@ -49,13 +57,38 @@ export const navigation = () => {
   publicationUser.setAttribute('id', 'div_publication_user');
   publicationUser.innerHTML = `<article class="article_publication_user">
     <h3 id="h3_publication_user">¿Qué quieres publicar?</h3>
-
+    <div class="add_info_publication">
+    <div id="add_photo_publication" class="add_info">
+    <input type="file" id="file_photo_publication" name="file_photo_publication">
+    <i class="fa-solid fa-image"></i>&nbsp;&nbsp;Agregar Foto</div>&nbsp;&nbsp;
+    <div id="add_publication" class="add_info"><i class="fa-solid fa-bullhorn"></i>&nbsp;&nbsp;Publicar</div>
+    </div>
     `;
-  console.log(header);
+  //  console.log(header);
   divPrueba.appendChild(header);
-  profile.appendChild(photo);
-  profile.appendChild(profileInfo);
+  divPrueba.appendChild(cover);
+  divPrueba.appendChild(photo);
+  divPrueba.appendChild(profileInfo);
   divPrueba.appendChild(profile);
-  sectionPublication.appendChild(publicationUser);
+  divPrueba.appendChild(publicationUser);
   divPrueba.appendChild(sectionPublication);
+
+  divPrueba.querySelector('.btn_edit_cover').addEventListener('click', () => {
+    document.getElementById('file_cover').click();
+  });
+
+  divPrueba.querySelector('.btn_edit_photo').addEventListener('click', () => {
+    document.getElementById('file_photo').click();
+  });
+
+  divPrueba.querySelector('.add_info').addEventListener('click', () => {
+  document.getElementById('file_photo_publication').click();
+  });
+
+  return divPrueba;
+
+ 
+
+  
 };
+
