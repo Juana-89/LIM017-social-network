@@ -1,3 +1,6 @@
+/* eslint-disable import/no-cycle */
+import { logout } from '../.firebase/auth.js';
+
 export const navigation = () => {
   // document.write('probando');
   document.querySelector('.container_video').remove();
@@ -82,13 +85,13 @@ export const navigation = () => {
   });
 
   divPrueba.querySelector('.add_info').addEventListener('click', () => {
-  document.getElementById('file_photo_publication').click();
+    document.getElementById('file_photo_publication').click();
+  });
+
+  divPrueba.querySelector('#btn_logout').addEventListener('click', (e) => {
+    e.preventDefault();
+    logout();
   });
 
   return divPrueba;
-
- 
-
-  
 };
-

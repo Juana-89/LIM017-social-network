@@ -19,23 +19,20 @@ const routes = {
 };
 
 export const onNavigate = (pathname) => {
-  // document.querySelector('.container_welcome').style.display = 'none';
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
+  window.history.pushState({}, pathname, window.location.origin + pathname);
   while (mainFirstPage.firstChild) {
     mainFirstPage.removeChild(mainFirstPage.firstChild);
   }
   mainFirstPage.appendChild(routes[pathname]());
 };
-const component = routes[window.location.pathname];
 
-window.onpopstate = () => {
-  while (mainFirstPage.firstChild) {
-    mainFirstPage.removeChild(mainFirstPage.firstChild);
-  }
-  mainFirstPage.appendChild(routes[window.location.pathname]());
-};
-mainFirstPage.appendChild(component());
+window.addEventListener('DOMContentLoaded', () => {
+  const component = routes[window.location.pathname];
+  window.onpopstate = () => {
+    while (mainFirstPage.firstChild) {
+      mainFirstPage.removeChild(mainFirstPage.firstChild);
+    }
+    mainFirstPage.appendChild(routes[window.location.pathname]());
+  };
+  mainFirstPage.appendChild(component());
+});

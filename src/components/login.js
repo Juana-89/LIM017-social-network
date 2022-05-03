@@ -35,7 +35,6 @@ export const login = () => {
     const emailUserRegister = document.querySelector('#inp_email').value;
     const passwordUserRegister = document.querySelector('#inp_password').value;
     signInUser(emailUserRegister, passwordUserRegister);
-    divForm.querySelector('#btn_login_user').addEventListener('click', () => onNavigate('/navigation'));
   });
 
   return divForm;

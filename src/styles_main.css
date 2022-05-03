@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Lobster&display=swap&family=Signika&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Bebas Neue', cursive;
 }
 
 .show_home_page{
@@ -29,6 +28,7 @@
 
 .h1_welcome0{
     /*texto en medio de la página*/
+    font-family: 'Bebas Neue', cursive;
     font-size: 120px;
     position: absolute;
     text-align: center;
@@ -59,6 +59,7 @@
 
 .btn_start{
     font-size: 20px;
+    font-family: 'Bebas Neue', cursive;
     position: absolute;
     border: none;
     border-radius: 24px;
@@ -132,6 +133,7 @@
 
 .form_inp{
     background: #fff;
+    font-family: 'Bebas Neue', cursive;
     display:block;
     margin: 10px auto;
     text-align: center;
@@ -152,6 +154,7 @@
 
 .form_btn{
     border: 0;
+    font-family: 'Bebas Neue', cursive;
     background: #5352ed;
     display: block;
     margin: 20px auto;
@@ -204,7 +207,7 @@
     height: 30px;
 }
 
-.form_h3_pie{
+.form_h3_pie, .form_h3_inf{
     color: #fff;
     font-family: 'Inter', sans-serif;
     font-size: 13px;
@@ -214,7 +217,6 @@
 .form_h3_pie:hover{
     color: #FE2E2E;
     cursor:pointer;
-    text-decoration: underline;
 }
 
 .container_register {
@@ -239,6 +241,7 @@
 
 .form_inp_create{
     background: #fff;
+    font-family: 'Bebas Neue', cursive;
     display:block;
     margin: 10px auto;
     text-align: center;

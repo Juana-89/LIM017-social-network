@@ -237,10 +237,7 @@ body::-webkit-scrollbar-thumb {
 #h3_publication_user{
 font-family: 'Signika', sans-serif;
 }
-.add_info:hover{
-    background:#180A0A;
-    cursor: pointer;
-    }
+
 .add_info{
     font-family: 'Signika', sans-serif;
     font-size: 18px;
@@ -248,6 +245,10 @@ font-family: 'Signika', sans-serif;
     line-height: 35px;
     padding-left: 105px;
 }
+.add_info:hover{
+    background:#180A0A;
+    cursor: pointer;
+    }
 #file_cover, #file_photo, #file_photo_publication{
     display: none;
 }
