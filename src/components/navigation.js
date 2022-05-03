@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { logout } from '../.firebase/auth.js';
+// import { logout } from '../.firebase/auth.js';
 
 export const navigation = () => {
   // document.write('probando');
@@ -90,7 +90,7 @@ export const navigation = () => {
 
   divPrueba.querySelector('#btn_logout').addEventListener('click', (e) => {
     e.preventDefault();
-    logout();
+    // logout();
   });
 
   return divPrueba;
