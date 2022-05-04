@@ -5,10 +5,7 @@ import { onNavigate } from '../main.js';
 export const welcome = () => {
   const divWelcome = document.createElement('div');
   divWelcome.classList.add('container_welcome');
-  // divWelcome.innerHTML = `
-  //   <h1 class="h1_welcome0">Tusuy Perú</h1>
-  //   <h1 class="h1_welcome1">Bienvenid@ a la red social favorita en danzas folklóricas peruanas y podrás encontrar la información que necesitas</h1>
-  //   <input type="button" class="btn_start" value ="Únete"/>`;
+
   const h1Welcome0 = document.createElement('h1');
   h1Welcome0.classList.add('h1_welcome0');
   h1Welcome0.innerHTML = 'Tusuy Perú';

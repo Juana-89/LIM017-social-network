@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-// import { logout } from '../.firebase/auth.js';
+import { logout } from '../.firebase/auth.js';
 
 export const navigation = () => {
   // document.write('probando');
@@ -29,9 +29,9 @@ export const navigation = () => {
   const cover = document.createElement('div');
   cover.setAttribute('id', 'div_cover');
   cover.innerHTML = `<input type="file" id="file_cover" name="file" >
-  <button class="btn_edit_cover">
-  <i class="fa-solid fa-camera-retro"></i>Editar foto de portada</button>
-  `;
+    <button class="btn_edit_cover">
+    <i class="fa-solid fa-camera-retro"></i>Editar foto de portada</button>
+    `;
 
   const profile = document.createElement('section');
   profile.setAttribute('id', 'section_profile_user');
@@ -45,6 +45,7 @@ export const navigation = () => {
     <button type="button" class="btn_edit_photo">
     <i class="fa-solid fa-camera"></i>
     </picture>`;
+
   const profileInfo = document.createElement('article');
   profileInfo.setAttribute('id', 'article_profile_user');
   profileInfo.innerHTML = `<div class="div_article_profile_user">
@@ -52,7 +53,8 @@ export const navigation = () => {
     <h3 id="h3_perfil">Usuario:<br>DinaTM</h3><br>
     <h3 id="h3_perfil">Nombre:<br>Dina Talavera Mark</h3><br>
     <h3 id="h3_perfil">E-mail:<br>dinatm@gmail.com</h3>
-</div>`;
+    </div>`;
+
   const sectionPublication = document.createElement('section');
   sectionPublication.setAttribute('id', 'section_publication');
 
@@ -65,9 +67,8 @@ export const navigation = () => {
     <input type="file" id="file_photo_publication" name="file_photo_publication">
     <i class="fa-solid fa-image"></i>&nbsp;&nbsp;Agregar Foto</div>&nbsp;&nbsp;
     <div id="add_publication" class="add_info"><i class="fa-solid fa-bullhorn"></i>&nbsp;&nbsp;Publicar</div>
-    </div>
-    `;
-  //  console.log(header);
+    </div>`;
+
   divPrueba.appendChild(header);
   divPrueba.appendChild(cover);
   divPrueba.appendChild(photo);
@@ -90,7 +91,7 @@ export const navigation = () => {
 
   divPrueba.querySelector('#btn_logout').addEventListener('click', (e) => {
     e.preventDefault();
-    // logout();
+    logout();
   });
 
   return divPrueba;

@@ -1,7 +1,8 @@
+/* eslint-disable import/named */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../main.js';
-// import { sendEmailForgotPassword } from '../.firebase/auth.js';
+import { sendEmailForgotPassword } from '../.firebase/auth.js';
 
 export const forgot = () => {
   const divForgotPassword = document.createElement('div');
@@ -17,7 +18,7 @@ export const forgot = () => {
 
   divForgotPassword.querySelector('#btn_submit1').addEventListener('click', (e) => {
     e.preventDefault;
-    // sendEmailForgotPassword();
+    sendEmailForgotPassword();
   });
 
   return divForgotPassword;

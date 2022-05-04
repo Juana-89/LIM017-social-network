@@ -1,4 +1,4 @@
-import { loginGmailFunction, loginFacebookFunction, signInUserFunction, createNewUserFunction } from '../.firebase/controllers.js';
+import { loginGmailFunction, loginFacebookFunction, signInUserFunction, createNewUserFunction, sendEmailForgotPasswordFunction, logoutFunction } from '../.firebase/controllers.js';
 import { onNavigate } from '../main.js';
 
 export const signInGmail = () => {
@@ -40,7 +40,7 @@ export const signInUser = (email, password) => {
         icon: 'success',
         confirmButtonText: 'Aceptar',
         timer: 2000
-    })
+        })
     console.log("¡Entraste con éxito!", userCredential.user)
     setTimeout(function () {onNavigate('/navigation')}, 2500);
     })
@@ -50,7 +50,7 @@ export const signInUser = (email, password) => {
         text: 'No pudiste loguearte por el siguiente motivo: ' + error,
         icon: 'error',
         confirmButtonText: 'Aceptar'
-    })
+        })
     return false;
     })
 };
@@ -67,7 +67,7 @@ export const createNewUser = () => {
         icon: 'success',
         confirmButtonText: 'Aceptar',
         timer: 3500 
-    })
+        })
     setTimeout(function () {onNavigate('/login')}, 4000);
     })
     .catch((error) => {
@@ -76,7 +76,48 @@ export const createNewUser = () => {
         text: 'Ocurrió el siguiente error: ' + error,
         icon: 'error',
         confirmButtonText: 'Aceptar'
-    })
+        })
     return false;
     });
+};
+
+export const sendEmailForgotPassword = () => {
+    const email = document.querySelector('#inp_email_forgot').value;
+    sendEmailForgotPasswordFunction(email)
+    .then(() => {
+    // console.log('Enviado, revísalo!', email);
+    // alert('Enviado, revísalo!', email);
+    Swal.fire({ 
+        title: 'Correo electrónico de restablecimiento de contraseña enviado a: ',
+        text: email,
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        timer: 5000
+         })
+    })
+    .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert (errorCode + errorMessage )
+    return false;
+    });
+        //   Swal.fire({ 
+        //     title: 'Ocurrió el siguiente error: ' ,
+        //     text: error,
+        //     icon: 'error',
+        //     confirmButtonText: 'Aceptar'
+        //   })
+        //   return false;
+        // });
+};
+
+export const logout = () => {
+    logoutFunction(auth).then(() => {
+        // Sign-out successful.
+    alert('se cerró sesión')
+    }).catch((error) => {
+        // An error happened.
+    alert(error)
+    });
+      
     }
