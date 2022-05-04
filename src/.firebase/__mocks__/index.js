@@ -1,3 +1,4 @@
+//Mockeo todas las funciones de index.js
 export const initializeApp = () => Promise.resolve({});
 export const getAuth = () => Promise.resolve({});
 export const getFirestore = () => Promise.resolve({});

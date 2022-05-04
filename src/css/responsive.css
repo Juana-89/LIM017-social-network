@@ -1,4 +1,23 @@
 /*index.html y sus componentes*/
+@media only screen and (min-width: 768px) and (max-width: 970px) {
+    .container_video video{
+    width: auto;
+    height: auto;
+    }
+    .h1_welcome0{
+    top: 28%;
+    }
+    .h1_welcome1 {
+    top: 50%;
+    }
+    .btn_start {
+    top: 65%;
+    }
+    /* .form_info{
+    margin: 50%;
+    }    */
+}
+
 @media only screen and (min-width: 360px) and (max-width: 767px){
     .container_video video{
     width: auto;

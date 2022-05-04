@@ -170,25 +170,6 @@
     background: #FA5858;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 970px) {
-    .container_video video{
-    width: auto;
-    height: auto;
-    }
-    .h1_welcome0{
-    top: 28%;
-    }
-    .h1_welcome1 {
-    top: 50%;
-    }
-    .btn_start {
-    top: 65%;
-    }
-    /* .form_info{
-    margin: 50%;
-    }    */
-}
-
 .label_rrss{
     display: flex;
     border: 1px solid #000;
