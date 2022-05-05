@@ -9,8 +9,8 @@ import { forgot } from '../src/components/forgot_password';
 
 jest.mock('.../../../src/.firebase/index');
 
-describe('onNavigate devuelve vistas históricas', () => {
-  it('onNavigate debería de devolver la vista: home', () => {
+describe('ver vistas históricas', () => {
+  it('debería de devolver la vista: home', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
     const mainFirstPage = document.querySelector('.show_home_page');
     const registerView = welcome();
@@ -18,7 +18,7 @@ describe('onNavigate devuelve vistas históricas', () => {
     expect(mainFirstPage.innerHTML);
   });
 
-  it('onNavigate debería de devolver la vista: login', () => {
+  it('debería de devolver la vista: login', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
     const mainFirstPage = document.querySelector('.show_home_page');
     const loginView = login();
@@ -26,7 +26,7 @@ describe('onNavigate devuelve vistas históricas', () => {
     expect(mainFirstPage.innerHTML);
   });
 
-  it('onNavigate debería de devolver la vista: register', () => {
+  it('debería de devolver la vista: register', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
     const mainFirstPage = document.querySelector('.show_home_page');
     const registerView = register();
@@ -34,7 +34,7 @@ describe('onNavigate devuelve vistas históricas', () => {
     expect(mainFirstPage.innerHTML);
   });
 
-  it('onNavigate debería de devolver la vista: forgot', () => {
+  it('debería de devolver la vista: forgot', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
     const mainFirstPage = document.querySelector('.show_home_page');
     const forgotView = forgot();
@@ -42,7 +42,7 @@ describe('onNavigate devuelve vistas históricas', () => {
     expect(mainFirstPage.innerHTML);
   });
 
-  // it('onNavigate debería de devolver la vista: navigation', () => {
+  // it('debería de devolver la vista: navigation', () => {
   //   document.body.innerHTML = '<main class="show_home_page"></main>';
   //   const mainFirstPage = document.querySelector('.show_home_page');
   //   const navigationView = navigation();

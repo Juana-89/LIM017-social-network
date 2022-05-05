@@ -14,12 +14,12 @@ describe('signInUser', () => {
     const password = '111111';
     expect(typeof signInUserFunction(email, password)).toBe('object');
   });
-  it('debería de retornar true:', async () => {
+  it('debería de retornar true:', () => {
     const email = 'usuario@hotmail.es';
     const password = '111111';
-    const result = await signInUserFunction(email, password);
+    const result = signInUserFunction(email, password);
 
-      expect(result).toBe(true);
+      expect(result).toBe({});
   
 
   });
