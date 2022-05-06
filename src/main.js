@@ -9,8 +9,8 @@ import { navigation } from './components/navigation.js';
 // {Import the functions you need from the SDKs you need}
 
 const mainFirstPage = document.querySelector('.show_home_page');
-console.log(mainFirstPage);
-const routes = {
+
+export const routes = {
   '/': welcome,
   '/login': login,
   '/register': register,

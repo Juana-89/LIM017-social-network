@@ -5,11 +5,12 @@ import { welcome } from '../src/components/home';
 import { login } from '../src/components/login';
 import { register } from '../src/components/register';
 import { forgot } from '../src/components/forgot_password';
+import { onNavigate, routes } from '../src/main';
 // import { navigation } from '../src/components/navigation';
 
 jest.mock('.../../../src/.firebase/index');
 
-describe('ver vistas históricas', () => {
+describe('Ver vistas históricas', () => {
   it('debería de devolver la vista: home', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
     const mainFirstPage = document.querySelector('.show_home_page');
@@ -42,11 +43,11 @@ describe('ver vistas históricas', () => {
     expect(mainFirstPage.innerHTML);
   });
 
-  // it('debería de devolver la vista: navigation', () => {
-  //   document.body.innerHTML = '<main class="show_home_page"></main>';
-  //   const mainFirstPage = document.querySelector('.show_home_page');
-  //   const navigationView = navigation();
-  //   mainFirstPage.appendChild(navigationView);
-  //   expect(mainFirstPage.innerHTML);
-  // });
+  test.skip('debería de devolver la vista: navigation', () => {
+    document.body.innerHTML = '<main class="show_home_page"></main>';
+    const mainFirstPage = document.querySelector('.show_home_page');
+    const navigationView = navigation();
+    mainFirstPage.appendChild(navigationView);
+    expect(mainFirstPage.innerHTML);
+  });
 });

@@ -8,6 +8,6 @@ export class GoogleAuthProvider {};
 export class FacebookAuthProvider {};
 export const signInWithPopup = jest.fn((auth, provider) => Promise.resolve({}));
 export const signInWithEmailAndPassword = jest.fn((auth, email, password) => Promise.resolve({}));
-export const createUserWithEmailAndPassword = jest.fn((auth, email, password) => Promise.resolve({}));
+export const createUserWithEmailAndPassword = jest.fn((auth, email, password) => Promise.resolve({email, password}));
 export const sendPasswordResetEmail = jest.fn((auth,email) => Promise.resolve({}));
 export const signOut = jest.fn(() => Promise.resolve({}));
