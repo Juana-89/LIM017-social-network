@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Square+Peg&family=Fjalla+One&family=Teko&family=Yanone+Kaffeesatz&displayfamily=Yanone+Kaffeesatz&display=swap&family=Signika&display=swap');
 
-/* body{
+body{
     margin: 0;
     padding: 0;
     background: rgb(255,58,48);
     background: linear-gradient(90deg, rgba(255,58,48,1) 0%, rgba(228,20,20,1) 47%, rgba(235,115,29,1) 100%);
     font-family: 'Signika', sans-serif;
-} */
+}
 
 /*estilo de header*/
 #header_navigation_profile{
