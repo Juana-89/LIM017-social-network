@@ -15,7 +15,7 @@ describe('Creación de nuevo usuario', () => {
   });
 
   describe('Login Gmail', () => {
-    it('debería de retornar ub objeto', () => {
+    it('debería de retornar un objeto', () => {
       document.body.innerHTML = '<main class="show_home_page"></main>';
       loginGmailFunction().then((user) => {
         expect(user).toBe(object)
@@ -26,7 +26,7 @@ describe('Creación de nuevo usuario', () => {
   });
     
   describe('Facebook', () => {
-      it('debería de retornar {}', () => {
+      it('debería de retornar un objeto', () => {
         document.body.innerHTML = '<main class="show_home_page"></main>';
         loginFacebookFunction().then((user) => {
          expect(user).toBe(object)
@@ -39,7 +39,7 @@ describe('Creación de nuevo usuario', () => {
   describe('signInUserFunction', () => {
       it('Mensaje de error si se loguea incorrectamente', () => {
         const signInUserFunction = jest.fn();
-        signInUserFunction.mockRejectedValue({ error: 'Contraseña incorrecta' });
+        signInUserFunction.mockRejectedValue({ error: 'Incorrect password' });
         });
   });
 
@@ -53,8 +53,8 @@ describe('Creación de nuevo usuario', () => {
       it('createNewUserFunction: Debería poder crear nuevo usuario', () =>  createNewUserFunction('juana@dominio.com', '111111')     
       .then(() => {
         expect(createUserWithEmailAndPassword).toHaveBeenCalled();
-        expect(createUserWithEmailAndPassword.mock.calls[0][0]).toStrictEqual('juana@dominio.com');
-        expect(createUserWithEmailAndPassword.mock.calls[0][1]).toStrictEqual('111111');
+        expect(createUserWithEmailAndPassword.mock.calls[0][1]).toStrictEqual('juana@dominio.com');
+        expect(createUserWithEmailAndPassword.mock.calls[0][2]).toStrictEqual('111111');
 
       }));
     

@@ -1,5 +1,7 @@
 //Desacoplando funciones 
-import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, createUserWithEmailAndPassword, setDoc, doc, signOut } from '../.firebase/index.js';
+import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, 
+         signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, 
+         createUserWithEmailAndPassword, setDoc, doc, signOut } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);

@@ -1,4 +1,6 @@
-import { loginGmailFunction, loginFacebookFunction, signInUserFunction, createNewUserFunction, sendEmailForgotPasswordFunction, logoutFunction } from '../.firebase/controllers.js';
+import { loginGmailFunction, loginFacebookFunction, signInUserFunction, 
+         createNewUserFunction, sendEmailForgotPasswordFunction, 
+         logoutFunction } from '../.firebase/controllers.js';
 import { onNavigate } from '../main.js';
 
 export const signInGmail = () => {
