@@ -6,9 +6,9 @@ import { onNavigate } from '../main.js';
 export const signInGmail = () => {
     return loginGmailFunction()
     .then(result => {
-    console.log(result)
+    console.log(result.user)
     console.log('se logueo con Gmail');
-    setTimeout(function () {onNavigate('/navigation')}, 3000);
+    setTimeout(function () {onNavigate('/wall')}, 3000);
     })
     .catch((error) => {
     const errorCode = error.code;
@@ -21,9 +21,9 @@ export const signInGmail = () => {
 export const signInFacebook = () => {
     return loginFacebookFunction()
     .then(result => {
-    console.log(result)
+    console.log(result.user)
     console.log('se logueo con Facebook' );
-    setTimeout(function () {onNavigate('/navigation')}, 3000);
+    setTimeout(function () {onNavigate('/wall')}, 3000);
     })
     .catch((error) => {
     const errorCode = error.code;
@@ -44,7 +44,7 @@ export const signInUser = (email, password) => {
         timer: 2000
         })
     console.log("¡Entraste con éxito!", userCredential.user)
-    setTimeout(function () {onNavigate('/navigation')}, 2500);
+    setTimeout(function () {onNavigate('/wall')}, 2500);
     })
     .catch((error) => {
     Swal.fire({
@@ -104,22 +104,24 @@ export const sendEmailForgotPassword = () => {
         })
         return false;
     });
-    return false;
+    // return false;
 };
 
 export const logout = () => {
     return logoutFunction(auth)
     .then(() => {
-    // alert('se cerró sesión')
-    Swal.fire({
-        titleText: '¿Deseas cerrar sesión?',
-        icon: 'question',
-        showDenyButton: true,
-        showCancelButton: true
-        })
+        console.log('probando')
+    alert('se cerró sesión')
+    // Swal.fire({
+    //     titleText: '¿Deseas cerrar sesión?',
+    //     icon: 'question',
+    //     showDenyButton: true,
+    //     showCancelButton: true
+    //     })
     })
     .catch((error) => {
         // An error happened.
     alert(error)
+    return false
     });
 };

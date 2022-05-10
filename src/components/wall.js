@@ -1,10 +1,15 @@
+/* eslint-disable no-shadow */
 /* eslint-disable import/no-cycle */
 import { logout } from '../.firebase/auth.js';
+import {
+  onAuthStateChanged, getAuth, collection, getFirestore, getDocs,
+} from '../.firebase/index.js';
+import { app } from '../.firebase/config.js';
 
-export const navigation = () => {
+export const wall = () => {
   // document.write('probando');
   document.querySelector('.container_video').remove();
-  const divPrueba = document.querySelector('main');
+  const divWall = document.querySelector('main');
   const header = document.createElement('header');
   header.setAttribute('id', 'header_navigation_profile');
   header.innerHTML = `<div class="logo">
@@ -69,30 +74,87 @@ export const navigation = () => {
     <div id="add_publication" class="add_info"><i class="fa-solid fa-bullhorn"></i>&nbsp;&nbsp;Publicar</div>
     </div>`;
 
-  divPrueba.appendChild(header);
-  divPrueba.appendChild(cover);
-  divPrueba.appendChild(photo);
-  divPrueba.appendChild(profileInfo);
-  divPrueba.appendChild(profile);
-  divPrueba.appendChild(publicationUser);
-  divPrueba.appendChild(sectionPublication);
+  divWall.appendChild(header);
+  divWall.appendChild(cover);
+  divWall.appendChild(photo);
+  divWall.appendChild(profileInfo);
+  divWall.appendChild(profile);
+  divWall.appendChild(publicationUser);
+  divWall.appendChild(sectionPublication);
 
-  divPrueba.querySelector('.btn_edit_cover').addEventListener('click', () => {
+  const auth = getAuth(app);
+  const user = auth.currentUser;
+  const db = getFirestore(app);
+  // inicio sesión
+  //   onAuthStateChanged(auth, (nom) => {
+  //     if (user !== null) {
+  //       // muestra los datos del usuario ingresado
+  //       user.providerData.forEach((profile) => {
+  //         console.log(`Sign-in provider: ${profile.providerId}`);
+  //         console.log(`  Provider-specific UID: ${profile.uid}`);
+  //         console.log(`  Name: ${profile.displayName}`);
+  //         console.log(`  Email: ${profile.email}`);
+  //         console.log(`  Photo URL: ${profile.photoURL}`);
+  //       });
+
+  //       console.log('juanaaaaaaaaaaaa');
+  //     } else {
+  //       // User is signed out
+  //       // ...
+  //       console.log('nooooooooooooooo');
+  //     }
+  //   });
+  // //muestra si la bd tiene datos almacenados
+  //   getDocs(collection(db, 'posts'))
+  //   .then((snapshot) => {
+  //     console.log(snapshot.docs);
+  //   })
+
+  const postList = document.querySelector('.article_publication_user');
+  const configPosts = (data) => {
+    if (data.length) {
+      let articlePost = '';
+      data.forEach((doc) => {
+        const post = doc.data();
+        console.log(post);
+        const liPost = `
+      <li class="list_group_item"><h5>${post.title}</h5><h5>${post.description}</h5></li>`;
+        articlePost += liPost;
+      });
+      postList.innerHTML = articlePost;
+    } else {
+      postList.innerHTML = 'login out';
+    }
+  };
+  onAuthStateChanged(auth, (nom) => {
+    if (user) {
+      getDocs(collection(db, 'posts'))
+        .then((snapshot) => {
+          console.log(snapshot.docs);
+          configPosts(snapshot.docs);
+        });
+    } else {
+      console.log('tienes que loguearte');
+      configPosts([]);
+    }
+  });
+
+  divWall.querySelector('.btn_edit_cover').addEventListener('click', () => {
     document.getElementById('file_cover').click();
   });
 
-  divPrueba.querySelector('.btn_edit_photo').addEventListener('click', () => {
+  divWall.querySelector('.btn_edit_photo').addEventListener('click', () => {
     document.getElementById('file_photo').click();
   });
 
-  divPrueba.querySelector('.add_info').addEventListener('click', () => {
+  divWall.querySelector('.add_info').addEventListener('click', () => {
     document.getElementById('file_photo_publication').click();
   });
 
-  divPrueba.querySelector('#btn_logout').addEventListener('click', (e) => {
+  divWall.querySelector('#btn_logout').addEventListener('click', (e) => {
     e.preventDefault();
     logout();
   });
 
-  return divPrueba;
+  return divWall;
 };

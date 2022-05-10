@@ -152,7 +152,7 @@ padding: 20px;
     margin-bottom:10px;
     text-align: center;
 }
-/*ventana navigation del user*/
+/*ventana dashboard del user*/
 @media only screen and (min-width: 360px) and (max-width: 800px){
     .btn-bar{
         display:block;

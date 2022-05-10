@@ -8,10 +8,10 @@ import { login } from '../src/components/login';
 import { register } from '../src/components/register';
 import { forgot } from '../src/components/forgot_password';
 import { onNavigate } from '../src/main';
-import { navigation } from '../src/components/navigation';
+import { wall } from '../src/components/wall';
 
 jest.mock('.../../../src/.firebase/index');
-jest.mock('../src/components/navigation.js');
+jest.mock('../src/components/wall.js');
 
 describe('Ver devolución de vistas históricas', () => {
   it('debería de devolver la vista: home', () => {
@@ -46,10 +46,10 @@ describe('Ver devolución de vistas históricas', () => {
     expect(mainFirstPage.innerHTML);
   });
 
-  it('debería de devolver la vista: navigation', () => {
+  it('debería de devolver la vista: dashboard', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
     const mainFirstPage = document.querySelector('.show_home_page');
-    const navigationView = navigation();
+    const navigationView = wall();
     mainFirstPage.appendChild(navigationView);
     expect(mainFirstPage.innerHTML);
   });
@@ -85,18 +85,18 @@ describe('onNavigate', (done) => {
 
   it('debería enviarnos a "Crear nuevo usuario"', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
-    const createView = login();
+    const createView = register();
     setTimeout(() => {
       expect(onNavigate('/register')).toEqual(createView);
       done();
     });
   });
 
-  it('debería enviarnos a "Navigation"', () => {
+  it('debería enviarnos a "dashboard"', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
-    const naveView = login();
+    const naveView = wall();
     setTimeout(() => {
-      expect(onNavigate('/navigation')).toEqual(naveView);
+      expect(onNavigate('/wall')).toEqual(naveView);
       done();
     });
   });

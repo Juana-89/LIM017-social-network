@@ -35,7 +35,6 @@ export const validationPassword = () => {
 export const validationForm = (e) => {
   switch (e.target.name) {
     case 'email':
-      // console.log('hola');
       validationFields(expressions.email, e.target, 'email');
       break;
     case 'password1':

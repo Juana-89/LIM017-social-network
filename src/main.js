@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 /* eslint-disable function-paren-newline */
@@ -5,7 +6,7 @@ import { welcome } from './components/home.js';
 import { login } from './components/login.js';
 import { register } from './components/register.js';
 import { forgot } from './components/forgot_password.js';
-import { navigation } from './components/navigation.js';
+import { wall } from './components/wall.js';
 // {Import the functions you need from the SDKs you need}
 
 const mainFirstPage = document.querySelector('.show_home_page');
@@ -15,7 +16,7 @@ export const routes = {
   '/login': login,
   '/register': register,
   '/forgot': forgot,
-  '/navigation': navigation,
+  '/wall': wall,
 };
 
 export const onNavigate = (pathname) => {

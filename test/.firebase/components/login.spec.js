@@ -1,7 +1,7 @@
 import { login } from '../../../src/components/login';
 import { forgot } from '../../../src/components/forgot_password';
 import { register } from '../../../src/components/register';
-import { signInWithPopup, signInWithEmailAndPassword } from '../../../src/.firebase/index';
+import { signInWithPopup } from '../../../src/.firebase/index';
 import { signInGmail, signInFacebook } from '../../../src/.firebase/auth';
 import { onNavigate } from '../../../src/main';
 
@@ -14,9 +14,8 @@ describe('Probando login', () => {
   });
 });
 
-describe('Éxito al loguearse', () => {
-  beforeEach(() => signInWithEmailAndPassword.mockClear());
-  test.skip('debería poder loguearse si tiene cuenta registrada', (done) => {
+describe('Éxito al loguearse', async() => {
+  fit('debería poder loguearse si tiene cuenta registrada', (done) => {
     const signIn = jest.fn((email, password) => Promise.resolve({email,password}));
     const success = login();
     const btnLogin = success.querySelector('#btn_login_user');
@@ -28,7 +27,7 @@ describe('Éxito al loguearse', () => {
     
     btnLogin.dispatchEvent(new Event('click'));
     setTimeout(() => {
-    signIn(inpEmail, inpPassword).then(() =>{
+    await signIn(inpEmail, inpPassword)
       expect(window.location.pathname).toBe('Auth/Password are co');
     done();
   //}));
@@ -43,9 +42,9 @@ describe('Éxito al loguearse', () => {
   //     });
   //   },1000)
 
+},1000);
 });
-});
-});
+
 describe('Error al loguearse', () => {
   it('debería mostrar mensaje de error si no existe cuenta', () => {
     const signIn = jest.fn((email, password) => Promise.resolve({email,password}));

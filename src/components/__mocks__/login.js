@@ -1,4 +1,4 @@
-export const navigation = () => {
+export const login = () => {
   const createDiv = document.createElement('div');
   return createDiv;
 };

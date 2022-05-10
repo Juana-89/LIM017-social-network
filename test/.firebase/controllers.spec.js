@@ -44,6 +44,8 @@ describe('Creación de nuevo usuario', () => {
   });
 
   describe('Funciones de Firebase', () => {
+    beforeEach(() => signInWithEmailAndPassword.mockClear());
+    beforeEach(() => createUserWithEmailAndPassword.mockClear());
       it('signInUserFunction: Debería poder loguearse', () =>  signInUserFunction('juana@dominio.com', '111111')     
       .then(() => {
         expect(signInWithEmailAndPassword.mock.calls[0][1]).toStrictEqual('juana@dominio.com');

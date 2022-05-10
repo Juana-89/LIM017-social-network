@@ -9,7 +9,7 @@ export const register = () => {
   divRegister.classList.add('container_register');
   divRegister.innerHTML = ` <form id="form_create_user" class="form_register animated fadeInUp">
     <h1 class="form_h1_title">Crear cuenta</h1>
-    <h2 class="form_h3_inf">Ingresa los datos que te pedimos a continuación para que te unas a nuestra red</h2>
+    <h2 class="form_h3_inf">Ingresa tus datos: </h2>
     <div id="form_div_group_email" class="form_group_info_user">
     <div class="form_group_input">
     <input type="email" id="inp_email" class="form_inp_create" name="email" placeholder="Ingresa correo" required/>

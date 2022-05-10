@@ -1,7 +1,7 @@
 //Desacoplando funciones 
 import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, 
          signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, 
-         createUserWithEmailAndPassword, setDoc, doc, signOut } from '../.firebase/index.js';
+         createUserWithEmailAndPassword, setDoc, doc, onAuthStateChanged, signOut } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);
@@ -28,6 +28,10 @@ export const createNewUserFunction = (email, password) => {
 export const sendEmailForgotPasswordFunction = (email) => {
     auth.languageCode = 'es';
     return sendPasswordResetEmail(auth, email);
+};
+
+export const onAuthStateChangedFunction = (user) => {
+    return onAuthStateChanged(auth, user)
 };
 
 export const logoutFunction = () => {
