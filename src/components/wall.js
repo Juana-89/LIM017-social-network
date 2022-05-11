@@ -79,20 +79,11 @@ export const wall = () => {
     </div>
     </div>
     `;
-  // publicación de otros usuarios
 
   const publicationOtherUser = document.createElement('div');
   publicationOtherUser.setAttribute('id', 'div_publication_other_user');
   publicationOtherUser.innerHTML = `<div class="article_publication_other_user">
   <div class="add_info_publication_users"></div>`;
-
-  // window.onload = () => {
-  //   const elemento = document.querySelector('.article_publication_other_user');
-  //   console.log(elemento);
-  // };
-
-  // const aaaaa = divWall.querySelector('.article_publication_other_user');
-  // console.log(`${aaaaa}aaaaaaaaaaaaaaaaaaaaaaaaaaa`);
 
   divWall.appendChild(header);
   divWall.appendChild(cover);
@@ -223,10 +214,6 @@ export const wall = () => {
     //   console.log(storage, fileImage);
     // }
   });
-  // divWall.addEventListener('DOMContentLoaded', async () => {
-  //   // await getPost();
-  // });
-
   divWall.querySelector('#add_publication').addEventListener('click', () => {
     savePost();
   });

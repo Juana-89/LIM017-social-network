@@ -1,6 +1,6 @@
 import { loginGmailFunction, loginFacebookFunction, signInUserFunction, 
          createNewUserFunction, sendEmailForgotPasswordFunction, onAuthStateChangedFunction , 
-         getPostFunction, savePostFunction, logoutFunction } from '../.firebase/controllers.js';
+         onGetSnapshot, savePostFunction, logoutFunction } from '../.firebase/controllers.js';
 import { onNavigate } from '../main.js';
 import { getAuth, collection, getDocs , getFirestore} from '../.firebase/index.js'
 import { app } from '../.firebase/config.js';
@@ -111,41 +111,24 @@ export const sendEmailForgotPassword = () => {
         return false;
     });
     // return false;
-};
-// window.addEventListener('DOMContentLoaded', async () => {
-//    const postContainer = document.querySelector('#article_publication_other_user');
-//    console.log(postContainer)
-//    const querySnapshot = await getPostFunction()
-//    console.log(querySnapshot)
-//    let articlePost = '';
-//    querySnapshot.forEach((doc) => {
-//     const post = doc.data();
-//     console.log(post)
-//     articlePost = `<li class="list_group_item"><h5>${post.description}</h5></li>`;
-//    })
-//    postContainer += articlePost
-// })
+}
 
-//   window.onload = () => {
-//     const elemento = document.querySelector('.add_info_publication_users');
-//     console.log(elemento);
-//   };
-
-
+// Usuario puede ver los post guardados en la bd en tiempo real
     window.addEventListener('DOMContentLoaded', async () => {
-   const querySnapshot = await getPostFunction()
-   console.log(querySnapshot)
-   let postContainer = document.querySelector('.add_info_publication_users');
-   console.log(postContainer)
-   let articlePost = '';
-   querySnapshot.forEach(doc => {
-    const post = doc.data();
-    console.log(post)
-    articlePost += `<li class="list_group_item"><h5>${post.post}</h5></li>`;
-   })
-
-   postContainer.innerHTML = articlePost
+    onGetSnapshot((querySnapshot) => {
+    let postContainer = document.querySelector('.add_info_publication_users');
+    console.log(postContainer)
+   
+    let articlePost = '';
+    querySnapshot.forEach(doc => {
+        const post = doc.data();
+        console.log(post)
+        articlePost += `<h5>${post.post}</h5>`;
+    })
+    postContainer.innerHTML = articlePost
+    });
 });
+
 
 // // // // export const onAuthState = () => {
 // // // //     onAuthStateChangedFunction((state) => {

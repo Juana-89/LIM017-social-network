@@ -1,7 +1,7 @@
 //Desacoplando funciones 
 import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, 
          signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, 
-         createUserWithEmailAndPassword, getDocs, addDoc, collection, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
+         createUserWithEmailAndPassword, getDocs, onSnapshot, addDoc, collection, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);
@@ -35,9 +35,13 @@ export const onAuthStateChangedFunction = (state) => {
     const user = auth.currentUser;
     return onAuthStateChanged(auth, user)
 };
-
-export const getPostFunction = () => {
+// Ver datos de la bd
+export const getPost = () => {
    return getDocs(collection(db, 'posts')) 
+};
+// Ver datos en tiempo real
+export const onGetSnapshot = (callback) => {
+    return onSnapshot (collection(db, 'posts'), (callback) )
 };
 
 export const savePostFunction = (post) => {
