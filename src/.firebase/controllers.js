@@ -1,11 +1,12 @@
 //Desacoplando funciones 
 import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, 
          signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, 
-         createUserWithEmailAndPassword, setDoc, doc, onAuthStateChanged, signOut } from '../.firebase/index.js';
+         createUserWithEmailAndPassword, getDocs, addDoc, collection, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);
 const db = getFirestore(app);
+
 
 export const loginGmailFunction = () => {
     const provider = new GoogleAuthProvider()
@@ -30,8 +31,17 @@ export const sendEmailForgotPasswordFunction = (email) => {
     return sendPasswordResetEmail(auth, email);
 };
 
-export const onAuthStateChangedFunction = (user) => {
+export const onAuthStateChangedFunction = (state) => {
+    const user = auth.currentUser;
     return onAuthStateChanged(auth, user)
+};
+
+export const getPostFunction = () => {
+   return getDocs(collection(db, 'posts')) 
+};
+
+export const savePostFunction = (post) => {
+    return addDoc(collection(db, '/posts'), { post });
 };
 
 export const logoutFunction = () => {

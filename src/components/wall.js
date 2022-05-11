@@ -1,10 +1,8 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-shadow */
 /* eslint-disable import/no-cycle */
-import { logout } from '../.firebase/auth.js';
-import {
-  onAuthStateChanged, getAuth, collection, getFirestore, getDocs,
-} from '../.firebase/index.js';
-import { app } from '../.firebase/config.js';
+
+import { savePost, logout } from '../.firebase/auth.js';
 
 export const wall = () => {
   // document.write('probando');
@@ -63,29 +61,45 @@ export const wall = () => {
   const sectionPublication = document.createElement('section');
   sectionPublication.setAttribute('id', 'section_publication');
 
+  // publicaciones que quiere hacer el propio usuario
   const publicationUser = document.createElement('div');
   publicationUser.setAttribute('id', 'div_publication_user');
   publicationUser.innerHTML = `<article class="article_publication_user">
-    <h3 id="h3_publication_user">¿Qué quieres publicar?</h3>
-    <div class="add_info_publication">
+ 
+  <h3 id="h3_publication_user">¿Qué quieres publicar?</h3>
+  <textarea id="text_description" rows="3" placeholder="Escribe la descripción"></textarea>  
+    
+  <div class="add_info_publication">
     <div id="add_photo_publication" class="add_info">
     <input type="file" id="file_photo_publication" name="file_photo_publication">
     <i class="fa-solid fa-image"></i>&nbsp;&nbsp;Agregar Foto</div>&nbsp;&nbsp;
-    <div id="add_publication" class="add_info"><i class="fa-solid fa-bullhorn"></i>&nbsp;&nbsp;Publicar</div>
-    </div>`;
 
+    <div id="add_publication" class="add_info">
+    <i class="fa-solid fa-bullhorn"></i>&nbsp;&nbsp;Publicar</div>
+    </div>
+    </div>
+    `;
+  // publicación de otros usuarios
+
+    const publicationOtherUser = document.createElement('div');
+    publicationOtherUser.setAttribute('id', 'div_publication_other_user');
+    publicationOtherUser.innerHTML = `<article class="article_publication_other_user">
+  <div class="add_info_publication_users"></div>`;
+  
   divWall.appendChild(header);
   divWall.appendChild(cover);
   divWall.appendChild(photo);
   divWall.appendChild(profileInfo);
   divWall.appendChild(profile);
   divWall.appendChild(publicationUser);
+
+  divWall.appendChild(publicationOtherUser);
   divWall.appendChild(sectionPublication);
 
-  const auth = getAuth(app);
-  const user = auth.currentUser;
-  const db = getFirestore(app);
-  // inicio sesión
+  // const auth = getAuth(app);
+  // const user = auth.currentUser;
+  // const db = getFirestore(app);
+  // //inicio sesión
   //   onAuthStateChanged(auth, (nom) => {
   //     if (user !== null) {
   //       // muestra los datos del usuario ingresado
@@ -109,35 +123,82 @@ export const wall = () => {
   //   .then((snapshot) => {
   //     console.log(snapshot.docs);
   //   })
+  // /// ///////////intentando grabar post
+  // //   const title = document.querySelector('#inp_title').value;
+  // //   const description = document.querySelector('#inp_description').value;
+  // //   const saveTask = (title, description) => {
+  // //     createUserWithEmailAndPassword(auth, email, password)
+  // //   .then((userCredential) => {
+  // //   setDoc(doc(db, 'posts/'), {
+  // //     title: title,
+  // //     description: description,
+  // //   });
+  // //   alert("Publicado!");
+  // // })
+  // //   .catch((error) => {
+  // //     const errorCode = error.code;
+  // //    const errorMessage = error.message;
+  // //    alert(errorCode + errorMessage);
+  // //   });
+  // // };
 
-  const postList = document.querySelector('.article_publication_user');
-  const configPosts = (data) => {
-    if (data.length) {
-      let articlePost = '';
-      data.forEach((doc) => {
-        const post = doc.data();
-        console.log(post);
-        const liPost = `
-      <li class="list_group_item"><h5>${post.title}</h5><h5>${post.description}</h5></li>`;
-        articlePost += liPost;
-      });
-      postList.innerHTML = articlePost;
-    } else {
-      postList.innerHTML = 'login out';
-    }
-  };
-  onAuthStateChanged(auth, (nom) => {
-    if (user) {
-      getDocs(collection(db, 'posts'))
-        .then((snapshot) => {
-          console.log(snapshot.docs);
-          configPosts(snapshot.docs);
-        });
-    } else {
-      console.log('tienes que loguearte');
-      configPosts([]);
-    }
-  });
+  // // ver el perfil del usuario logueado pero no funciona
+  // // const profileList = document.querySelector('.div_article_profile_user');
+  // // const configProfile = (data) => {
+  // //   if (data) {
+  // //     let articleProfile = '';
+  // //     data.forEach((doc) => {
+  // //       const profile = doc.data();
+  // //       console.log(profile);
+  // //       const liProfile = `
+  // //       <h3 class="h3_perfil">${profile.displayName}</h3>
+  // //       <h3 class="h3_perfil">${profile.email}</h3>`;
+  // //       articleProfile += liProfile;
+  // //     });
+  // //     profileList.innerHTML = articleProfile;
+  // //   } else {
+  // //     profileList.innerHTML = 'login out';
+  // //   }
+  // // };
+
+  // // ver post de los usuarios
+  // const postList = document.querySelector('.article_publication_other_user');
+  // const configPosts = (data) => {
+  //   if (data.length) {
+  //     let articlePost = '';
+  //     data.forEach((doc) => {
+  //       const post = doc.data();
+  //       console.log(post);
+  //       const liPost = `
+  //     <li class="list_group_item"><h5>${post.description}</h5></li>`;
+  //       articlePost += liPost;
+  //     });
+  //     postList.innerHTML = articlePost;
+  //   } else {
+  //     postList.innerHTML = 'login out';
+  //   }
+  // };
+
+  // // usuario tiene que estar logueado para acceder a la vista de los posts
+  // onAuthStateChanged(auth, (nom) => {
+  //   if (user !== null) {
+  //     getDocs(collection(db, 'posts'))
+  //       .then((snapshot) => {
+  //         console.log(snapshot.docs);
+  //         configPosts(snapshot.docs);
+  //         user.providerData.forEach((profile) => {
+  //           console.log(`  Name: ${profile.displayName}`);
+  //           console.log(`  Email: ${profile.email}`);
+  //           // // configProfile(`  Name: ${profile.displayName}`);
+  //           // // configProfile(`  Email: ${profile.email}`);
+  //         });
+  //       });
+  //   } else {
+  //     console.log('tienes que loguearte');
+  //     configPosts([]);
+  //     //configProfile([]);
+  //   }
+  // });
 
   divWall.querySelector('.btn_edit_cover').addEventListener('click', () => {
     document.getElementById('file_cover').click();
@@ -147,14 +208,24 @@ export const wall = () => {
     document.getElementById('file_photo').click();
   });
 
-  divWall.querySelector('.add_info').addEventListener('click', () => {
+  divWall.querySelector('#add_photo_publication').addEventListener('click', () => {
     document.getElementById('file_photo_publication').click();
+    // function uploadImagePost() {
+    //   const storage = getStorage().ref();
+    //   const fileImage = document.querySelector('#file_photo_publication').files[0];
+    //   console.log(storage, fileImage);
+    // }
+  });
+  // divWall.addEventListener('DOMContentLoaded', async () => {
+  //   // await getPost();
+  // });
+
+  divWall.querySelector('#add_publication').addEventListener('click', () => {
+    savePost();
   });
 
-  divWall.querySelector('#btn_logout').addEventListener('click', (e) => {
-    e.preventDefault();
+  divWall.querySelector('#btn_logout').addEventListener('click', () => {
     logout();
   });
-
   return divWall;
 };

@@ -1,14 +1,16 @@
 import { loginGmailFunction, loginFacebookFunction, signInUserFunction, 
-         createNewUserFunction, sendEmailForgotPasswordFunction, 
-         logoutFunction } from '../.firebase/controllers.js';
+         createNewUserFunction, sendEmailForgotPasswordFunction, onAuthStateChangedFunction , 
+         getPostFunction, savePostFunction, logoutFunction } from '../.firebase/controllers.js';
 import { onNavigate } from '../main.js';
-
+import { getAuth, collection, getDocs , getFirestore} from '../.firebase/index.js'
+import { app } from '../.firebase/config.js';
+// Usuario puede loguearse con su cuenta de Gmail
 export const signInGmail = () => {
     return loginGmailFunction()
     .then(result => {
     console.log(result.user)
     console.log('se logueo con Gmail');
-    setTimeout(function () {onNavigate('/wall')}, 3000);
+    setTimeout(function () {onNavigate('/wall')}, 2000);
     })
     .catch((error) => {
     const errorCode = error.code;
@@ -18,12 +20,13 @@ export const signInGmail = () => {
     });
 };
 
+// Usuario puede loguearse con su cuenta de Facebook
 export const signInFacebook = () => {
     return loginFacebookFunction()
     .then(result => {
     console.log(result.user)
     console.log('se logueo con Facebook' );
-    setTimeout(function () {onNavigate('/wall')}, 3000);
+    setTimeout(function () {onNavigate('/wall')}, 2000);
     })
     .catch((error) => {
     const errorCode = error.code;
@@ -33,6 +36,7 @@ export const signInFacebook = () => {
     });
 };
 
+// Usuario puede loguearse si se encuentra registrado
 export const signInUser = (email, password) => {
     return signInUserFunction(email, password)
     .then(userCredential => {
@@ -57,6 +61,7 @@ export const signInUser = (email, password) => {
     })
 };
 
+// Usuario puede crear su cuenta para tener acceso a la red
 export const createNewUser = () => {
     const email = document.querySelector('#inp_email').value;
     const password = document.querySelector('#inp_password1').value;
@@ -83,6 +88,7 @@ export const createNewUser = () => {
     });
 };
 
+// Usuario puede recuperar su cuenta si se olvidó la contraseña
 export const sendEmailForgotPassword = () => {
     const email = document.querySelector('#inp_email_forgot').value;
     return sendEmailForgotPasswordFunction(email)
@@ -106,12 +112,106 @@ export const sendEmailForgotPassword = () => {
     });
     // return false;
 };
+// window.addEventListener('DOMContentLoaded', async () => {
+//    const postContainer = document.querySelector('#article_publication_other_user');
+//    console.log(postContainer)
+//    const querySnapshot = await getPostFunction()
+//    console.log(querySnapshot)
+//    let articlePost = '';
+//    querySnapshot.forEach((doc) => {
+//     const post = doc.data();
+//     console.log(post)
+//     articlePost = `<li class="list_group_item"><h5>${post.description}</h5></li>`;
+//    })
+//    postContainer += articlePost
+// })
 
+
+    window.addEventListener('DOMContentLoaded', async () => {
+   let postContainer = document.getElementById('div_publication_other_user');
+   console.log(postContainer)
+   const querySnapshot = await getPostFunction()
+   console.log(querySnapshot)
+   let articlePost = '';
+   querySnapshot.forEach(doc => {
+    const post = doc.data();
+    console.log(post)
+    articlePost = `<li class="list_group_item"><h5>${post.description}</h5></li>`;
+   })
+   postContainer += articlePost
+});
+
+// // // // export const onAuthState = () => {
+// // // //     onAuthStateChangedFunction((state) => {
+// // // //     const db = getFirestore(app);
+
+// // // //     const auth = getAuth(app);
+// // // //     const user = auth.currentUser;
+// // // //     const postList = document.querySelector('.article_publication_other_user');
+
+  
+
+// // // //         if (user !== null) {
+// // // //           getDocs(collection(db, 'posts'))
+// // // //             .then((snapshot) => {
+// // // //               console.log(snapshot.docs);
+// // // //               configPosts(snapshot.docs);
+// // // //               user.providerData.forEach((profile) => {
+// // // //                 console.log(`  Name: ${profile.displayName}`);
+// // // //                 console.log(`  Email: ${profile.email}`);
+// // // //                 configProfile(`  Name: ${profile.displayName}`);
+// // // //                 configProfile(`  Email: ${profile.email}`);
+// // // //               });
+// // // //             });
+// // // //         } else {
+// // // //           console.log('tienes que loguearte');
+// // // //           configPosts([]);
+// // // //           configProfile([]);
+// // // //         }
+      
+
+// // // //       const configPosts = (data) => {
+// // // //         if (data.length) {
+// // // //           let articlePost = '';
+// // // //           data.forEach((doc) => {
+// // // //           const post = doc.data();
+// // // //           console.log(post);
+// // // //           const liPost = `
+// // // //           <li class="list_group_item"><h5>${post.title}</h5><h5>${post.description}</h5></li>`;
+// // // //             articlePost += liPost;
+// // // //           });
+// // // //           postList.innerHTML = articlePost;
+// // // //         } else {
+// // // //           postList.innerHTML = 'login out';
+// // // //         }
+// // // //       };
+// // // //     })
+// // // // }
+
+// Guarda publicación del usuario activo
+export const savePost = () => {
+    const description = document.querySelector('#text_description').value;
+    return savePostFunction(description)
+    .then(() => {
+    Swal.fire({
+        titleText: 'Publicado en tu muro',
+        icon: 'success',
+        timer:3000,
+        timerProgressBar: true,
+        toast: true,
+        position: 'bottom-end',
+        allowOutsideClick: false
+        });
+    });  
+}
+
+// Cierra sesión del usuario activo mandándolo a la página de inicio, aun no funciona
 export const logout = () => {
     return logoutFunction(auth)
     .then(() => {
-        console.log('probando')
+    console.log('probando')
     alert('se cerró sesión')
+    setTimeout(function () {onNavigate('/')}, 2000);
     // Swal.fire({
     //     titleText: '¿Deseas cerrar sesión?',
     //     icon: 'question',

@@ -20,12 +20,14 @@ export const routes = {
 };
 
 export const onNavigate = (pathname) => {
+  console.log('estamos en onnavigate');
   window.history.pushState({}, pathname, window.location.origin + pathname);
   while (mainFirstPage.firstChild) {
     mainFirstPage.removeChild(mainFirstPage.firstChild);
   }
   mainFirstPage.appendChild(routes[pathname]());
 };
+console.log('estamos en onnavigate2');
 
 window.addEventListener('DOMContentLoaded', () => {
   const component = routes[window.location.pathname];
