@@ -126,19 +126,25 @@ export const sendEmailForgotPassword = () => {
 //    postContainer += articlePost
 // })
 
+//   window.onload = () => {
+//     const elemento = document.querySelector('.add_info_publication_users');
+//     console.log(elemento);
+//   };
+
 
     window.addEventListener('DOMContentLoaded', async () => {
-   let postContainer = document.getElementById('div_publication_other_user');
-   console.log(postContainer)
    const querySnapshot = await getPostFunction()
    console.log(querySnapshot)
+   let postContainer = document.querySelector('.add_info_publication_users');
+   console.log(postContainer)
    let articlePost = '';
    querySnapshot.forEach(doc => {
     const post = doc.data();
     console.log(post)
-    articlePost = `<li class="list_group_item"><h5>${post.description}</h5></li>`;
+    articlePost += `<li class="list_group_item"><h5>${post.post}</h5></li>`;
    })
-   postContainer += articlePost
+
+   postContainer.innerHTML = articlePost
 });
 
 // // // // export const onAuthState = () => {

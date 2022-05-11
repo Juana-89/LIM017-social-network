@@ -92,7 +92,7 @@ describe('onNavigate', (done) => {
     });
   });
 
-  it('debería enviarnos a "dashboard"', () => {
+  it('debería enviarnos a "Wall"', () => {
     document.body.innerHTML = '<main class="show_home_page"></main>';
     const naveView = wall();
     setTimeout(() => {
@@ -101,3 +101,12 @@ describe('onNavigate', (done) => {
     });
   });
 });
+// fit('debería enviarnos a "Wall"', (done) => {
+//   document.body.innerHTML = '<main class="show_home_page"></main>';
+//   const mainFirstPage = document.body.querySelector('.show_home_page');
+//   const naveView = wall();
+//   setTimeout(() => {
+//     expect(onNavigate('/wall')).toEqual(mainFirstPage(naveView));
+//     done();
+//   });
+// });

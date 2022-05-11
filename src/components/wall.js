@@ -81,18 +81,25 @@ export const wall = () => {
     `;
   // publicación de otros usuarios
 
-    const publicationOtherUser = document.createElement('div');
-    publicationOtherUser.setAttribute('id', 'div_publication_other_user');
-    publicationOtherUser.innerHTML = `<article class="article_publication_other_user">
+  const publicationOtherUser = document.createElement('div');
+  publicationOtherUser.setAttribute('id', 'div_publication_other_user');
+  publicationOtherUser.innerHTML = `<div class="article_publication_other_user">
   <div class="add_info_publication_users"></div>`;
-  
+
+  // window.onload = () => {
+  //   const elemento = document.querySelector('.article_publication_other_user');
+  //   console.log(elemento);
+  // };
+
+  // const aaaaa = divWall.querySelector('.article_publication_other_user');
+  // console.log(`${aaaaa}aaaaaaaaaaaaaaaaaaaaaaaaaaa`);
+
   divWall.appendChild(header);
   divWall.appendChild(cover);
   divWall.appendChild(photo);
   divWall.appendChild(profileInfo);
   divWall.appendChild(profile);
   divWall.appendChild(publicationUser);
-
   divWall.appendChild(publicationOtherUser);
   divWall.appendChild(sectionPublication);
 
