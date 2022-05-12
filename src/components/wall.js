@@ -87,7 +87,7 @@ export const wall = () => {
 
   const footer = document.createElement('footer');
   footer.classList.add('footer');
-  footer.innerHTML = '©Red social - Tusuy Perú | Hecho por Juana Llanje para Laboratoria LIM017</footer>';
+  footer.innerHTML = '©Red social - Tusuy Perú | Hecho por Juana Llanje para Laboratoria LIM017';
   // <img class="img_footer" src="./media/logo.png" />
 
   divWall.appendChild(header);

@@ -1,7 +1,7 @@
 //Desacoplando funciones 
 import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, 
          signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, 
-         createUserWithEmailAndPassword, getDocs, onSnapshot, addDoc, collection, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
+         createUserWithEmailAndPassword, getDocs, onSnapshot, addDoc, collection, deleteDoc, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);
@@ -53,6 +53,11 @@ export const onGetSnapshot = (callback) => {
 //Guardar post del usuario
 export const savePostFunction = (post) => {
     setTimeout(() => {return addDoc(collection(db, '/posts'), { post })}, 1000);
+};
+
+//Eliminar post del usuario
+export const deletePost = (id) => {
+   return deleteDoc(doc (db, '/posts', id));
 };
 
 //Salir de la sesión

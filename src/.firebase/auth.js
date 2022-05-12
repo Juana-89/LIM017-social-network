@@ -1,6 +1,6 @@
 import { loginGmailFunction, loginFacebookFunction, signInUserFunction, 
          createNewUserFunction, sendEmailForgotPasswordFunction, onAuthStateChangedFunction , 
-         onGetSnapshot, savePostFunction, logoutFunction } from '../.firebase/controllers.js';
+         onGetSnapshot, savePostFunction, deletePost, logoutFunction } from '../.firebase/controllers.js';
 import { onNavigate } from '../main.js';
 import { getAuth, collection, getDocs , getFirestore} from '../.firebase/index.js'
 import { app } from '../.firebase/config.js';
@@ -124,11 +124,21 @@ export const sendEmailForgotPassword = () => {
     querySnapshot.forEach(doc => {
         const post = doc.data();
         console.log(post)
-        articlePost += `<h5>${post.post}</h5><button class="btn_delete_post">Eliminar post&nbsp;
+        articlePost += `<h5>${post.post}</h5><button class="btn_delete_post" data-id=${doc.id}>Eliminar post&nbsp;
         <i class="fa-solid fa-trash-can"></i></button><button class="btn_edit_post">&nbsp&nbspEditar post&nbsp;
         <i class="fa-solid fa-pen-to-square"></i></button>`;
     })
     postContainer.innerHTML = articlePost
+
+    const btnDeletePost = postContainer.querySelectorAll('.btn_delete_post');
+    btnDeletePost.forEach(btnDelete => {
+        btnDelete.addEventListener('click', (e) => {
+            console.log(e.target.dataset.id)
+            deletePost(e.target.dataset.id)
+
+        })
+    })
+
     })
 });
 
