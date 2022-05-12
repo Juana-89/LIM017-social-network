@@ -4,6 +4,7 @@ import { loginGmailFunction, loginFacebookFunction, signInUserFunction,
 import { onNavigate } from '../main.js';
 import { getAuth, collection, getDocs , getFirestore} from '../.firebase/index.js'
 import { app } from '../.firebase/config.js';
+
 // Usuario puede loguearse con su cuenta de Gmail
 export const signInGmail = () => {
     return loginGmailFunction()
@@ -123,10 +124,12 @@ export const sendEmailForgotPassword = () => {
     querySnapshot.forEach(doc => {
         const post = doc.data();
         console.log(post)
-        articlePost += `<h5>${post.post}</h5>`;
+        articlePost += `<h5>${post.post}</h5><button class="btn_delete_post">Eliminar post&nbsp;
+        <i class="fa-solid fa-trash-can"></i></button><button class="btn_edit_post">&nbsp&nbspEditar post&nbsp;
+        <i class="fa-solid fa-pen-to-square"></i></button>`;
     })
     postContainer.innerHTML = articlePost
-    });
+    })
 });
 
 
@@ -180,18 +183,16 @@ export const sendEmailForgotPassword = () => {
 // Guarda publicación del usuario activo
 export const savePost = () => {
     const description = document.querySelector('#text_description').value;
-    return savePostFunction(description)
-    .then(() => {
     Swal.fire({
         titleText: 'Publicado en tu muro',
         icon: 'success',
-        timer:3000,
+        timer:2000,
         timerProgressBar: true,
         toast: true,
         position: 'bottom-end',
         allowOutsideClick: false
         });
-    });  
+    return savePostFunction(description)
 }
 
 // Cierra sesión del usuario activo mandándolo a la página de inicio, aun no funciona

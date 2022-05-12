@@ -25,7 +25,7 @@ body{
     align-items: center;
 }
 
-.logo img {
+.logo img, .footer img {
     height: 45px;
     margin-right: 5px;
     cursor: pointer;
@@ -277,3 +277,24 @@ font-family: 'Signika', sans-serif;
     border-radius: 10px;
 }
 
+.btn_delete_post, .btn_edit_post{
+    border-radius: 20px; 
+    border: 0;
+    font-family: 'Signika', sans-serif;
+    font-size: 18px;
+    background: #5352ed;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px 40px;
+    color: #fff;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.btn_delete_post:hover, .btn_edit_post:hover {
+    background: #FA5858;
+}
+.footer{
+    text-align: center;
+}

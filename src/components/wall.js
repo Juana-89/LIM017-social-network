@@ -85,6 +85,11 @@ export const wall = () => {
   publicationOtherUser.innerHTML = `<div class="article_publication_other_user">
   <div class="add_info_publication_users"></div>`;
 
+  const footer = document.createElement('footer');
+  footer.classList.add('footer');
+  footer.innerHTML = '©Red social - Tusuy Perú | Hecho por Juana Llanje para Laboratoria LIM017</footer>';
+  // <img class="img_footer" src="./media/logo.png" />
+
   divWall.appendChild(header);
   divWall.appendChild(cover);
   divWall.appendChild(photo);
@@ -93,7 +98,7 @@ export const wall = () => {
   divWall.appendChild(publicationUser);
   divWall.appendChild(publicationOtherUser);
   divWall.appendChild(sectionPublication);
-
+  divWall.appendChild(footer);
   // const auth = getAuth(app);
   // const user = auth.currentUser;
   // const db = getFirestore(app);
