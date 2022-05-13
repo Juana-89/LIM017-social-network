@@ -118,61 +118,67 @@ export const sendEmailForgotPassword = () => {
     let postContainer = document.querySelector('.article_publication_other_user');
     let postContainerEdit = document.querySelector('#text_description');
     let id = '';
-    console.log(postContainer)
-   
     let articlePost = '';
+    
     querySnapshot.forEach(doc => {
-        const post = doc.data();
-        console.log(post)
-        articlePost += ` <div class="add_info_publication_users"><h5>${post.post}</h5>
-        <button class="btn_delete_post" data-id=${doc.id}>Eliminar post&nbsp;<i class="fa-solid fa-trash-can"></i></button>
-        <button class="btn_edit_post"  data-id=${doc.id}>&nbsp&nbspEditar post&nbsp;<i class="fa-solid fa-pen-to-square"></i></button></div>`;
-    })
-    postContainer.innerHTML = articlePost
+    const post = doc.data();
+    console.log(post)
+    articlePost += ` <div class="add_info_publication_users"><h5>${post.post}</h5>
+    <div class="div_btns_add_info">
+    <button id="btn_delete_post" class="btns_add_info" data-id=${doc.id}>Eliminar&nbsp<i class="fa-solid fa-trash-can"></i></button>
+    <button id="btn_edit_post" class="btns_add_info" data-id=${doc.id}>Editar <i class="fa-solid fa-pen-to-square"></i></button></div>
+    </div>`;
+    
+})
+    postContainer.innerHTML = articlePost;
 
-    const btnsDeletePost = postContainer.querySelectorAll('.btn_delete_post');
+    const btnsDeletePost = postContainer.querySelectorAll('#btn_delete_post');
     btnsDeletePost.forEach((btnDelete) => {
         btnDelete.addEventListener('click', (e) => {
-            console.log(e.target.dataset.id)
-            deletePost(e.target.dataset.id)
-
-        })
+        deletePost(e.target.dataset.id)
+    })
     });
 
-    const btnsEditPost = postContainer.querySelectorAll('.btn_edit_post');
+    const btnsEditPost = postContainer.querySelectorAll('#btn_edit_post');
     btnsEditPost.forEach((btnEdit) => {
-        btnEdit.addEventListener('click', async (e) => {
-            const doc = await getPost(e.target.dataset.id)
-            const post = doc.data();
-            console.log(post)
+    btnEdit.addEventListener('click', async (e) => {
+    const doc = await getPost(e.target.dataset.id)
+    const post = doc.data();
+    console.log(post)
 
-            postContainerEdit.value = post.post;
+        postContainerEdit.value = post.post;
+        editStatus = true;
+        id = doc.id
 
-            editStatus = true;
-            id = doc.id
-            //const btnChangePostforEditPost = document.querySelector('#add_publication');
-            const btnAddEditPost = document.querySelector('#add_publication');
-            btnAddEditPost.style.display = 'none';
-            const btnEditPostMain = document.querySelector('#add_edit_publication');
-            btnEditPostMain.style.display = 'block';
-            //btnChangePostforEditPost.innerText = "Editar"
-            btnEditPostMain.addEventListener('click', () => {
-              
-                if (editStatus) {
-                    btnEditPostMain.style.display = 'block';
-                    btnAddEditPost.style.display = 'none';
-                    console.log("cargando")
-                    updatePost(id, {post: postContainerEdit.value})
-                    btnAddEditPost.style.display = 'block';
-                    btnEditPostMain.style.display = 'none';
-                }
-                editStatus = false;
+        const btnAddEditPost = document.querySelector('#add_publication');
+        btnAddEditPost.style.display = 'none';
+        const btnEditPostMain = document.querySelector('#add_edit_publication');
+        btnEditPostMain.style.display = 'block';
+        btnEditPostMain.addEventListener('click', () => {
+                
+        if (editStatus) {
+        btnEditPostMain.style.display = 'block';
+        btnAddEditPost.style.display = 'none';
+        console.log("cargando")
+        updatePost(id, {post: postContainerEdit.value})
+        Swal.fire({
+            titleText: 'Editado',
+            icon: 'success',
+            timer:2000,
+            timerProgressBar: true,
+            toast: true,
+            position: 'bottom-end',
+            allowOutsideClick: false
             });
-            
-          
+        btnAddEditPost.style.display = 'block'
+        btnEditPostMain.style.display = 'none'
+     
+        }
+        postContainerEdit.value = ''
+        editStatus = false;
+        });
         })
     });
-
     })
 });
 // // // // export const onAuthState = () => {

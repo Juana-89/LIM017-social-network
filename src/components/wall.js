@@ -9,7 +9,7 @@ export const wall = () => {
   document.querySelector('.container_video').remove();
   const divWall = document.querySelector('main');
   const header = document.createElement('header');
-  header.setAttribute('id', 'header_navigation_profile');
+  header.setAttribute('id', 'header_navigation');
   header.innerHTML = `<div class="logo">
     <!--img de flaticon-->
     <img class="header_img" src="./media/logo.png" />
@@ -21,13 +21,20 @@ export const wall = () => {
     <i class="fa-solid fa-align-justify"></i>
     </label>
     <ul class="nav_ul_link">
-    <a href="" class="nav_a_link">Perfil</a>
-    <a href="" class="nav_a_link">Historias de danzas</a>
-    <a href="" class="nav_a_link">Agenda de concursos</a>
-    <a href="" class="nav_a_link">Elencos de baile</a>
-    <a href="" class="nav_a_link">Cerrar Sesión&nbsp;&nbsp;<i id="btn_logout" class="fa-solid fa-arrow-right-from-bracket"></i></a>
-    </ul>
-    </nav>`;
+    <a href="" class="nav_a_link">Perfil</a>  
+    <a href="" class="nav_a_link">Historias de danzas</a> 
+    <a href="" class="nav_a_link">Agenda de concursos</a> 
+    <a href="" class="nav_a_link">Elencos de baile</a>  
+    <a href="" class="nav_a_link">Cerrar Sesión&nbsp;&nbsp;<i id="btn_logout" class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+    </ul></nav>
+    
+    <div class="header_navigation_profile">
+    <div class="logo">
+    <!--img de flaticon-->
+    <img class="header_img" src="./media/logo.png" />
+    <h2 class="name_logo">Tusuy Perú</h2>
+    </div>
+    </div>`;
 
   const cover = document.createElement('div');
   cover.setAttribute('id', 'div_cover');
@@ -52,10 +59,10 @@ export const wall = () => {
   const profileInfo = document.createElement('article');
   profileInfo.setAttribute('id', 'article_profile_user');
   profileInfo.innerHTML = `<div class="div_article_profile_user">
-    <h2 id="h2_perfil">Perfil</h2>
-    <h3 id="h3_perfil">Usuario:<br>DinaTM</h3><br>
-    <h3 id="h3_perfil">Nombre:<br>Dina Talavera Mark</h3><br>
-    <h3 id="h3_perfil">E-mail:<br>dinatm@gmail.com</h3>
+  <h2 id="h2_perfil">Perfil</h2><br>
+  <h3 id="h3_perfil"><i class="fa-solid fa-user"></i>&nbsp;Usuario: DinaTM</h3><br>
+  <h3 id="h3_perfil"><i class="fa-solid fa-heart"></i>&nbsp;Nombre: Dina Talavera Mark</h3><br>
+  <h3 id="h3_perfil"><i class="fa-solid fa-at"></i>&nbsp;E-mail: dinatm@gmail.com</h3>
     </div>`;
 
   const sectionPublication = document.createElement('section');
@@ -82,9 +89,6 @@ export const wall = () => {
     </div>
     </div>
     `;
-  const addPost = document.createElement('button');
-  addPost.classList.add('btnPRUEBA');
-  addPost.textContent = 'Actualizar';
 
   const publicationOtherUser = document.createElement('div');
   publicationOtherUser.setAttribute('id', 'div_publication_other_user');
@@ -104,7 +108,6 @@ export const wall = () => {
   divWall.appendChild(publicationOtherUser);
   divWall.appendChild(sectionPublication);
   divWall.appendChild(footer);
-  divWall.appendChild(addPost);
   // const auth = getAuth(app);
   // const user = auth.currentUser;
   // const db = getFirestore(app);
@@ -132,24 +135,6 @@ export const wall = () => {
   //   .then((snapshot) => {
   //     console.log(snapshot.docs);
   //   })
-  // /// ///////////intentando grabar post
-  // //   const title = document.querySelector('#inp_title').value;
-  // //   const description = document.querySelector('#inp_description').value;
-  // //   const saveTask = (title, description) => {
-  // //     createUserWithEmailAndPassword(auth, email, password)
-  // //   .then((userCredential) => {
-  // //   setDoc(doc(db, 'posts/'), {
-  // //     title: title,
-  // //     description: description,
-  // //   });
-  // //   alert("Publicado!");
-  // // })
-  // //   .catch((error) => {
-  // //     const errorCode = error.code;
-  // //    const errorMessage = error.message;
-  // //    alert(errorCode + errorMessage);
-  // //   });
-  // // };
 
   // // ver el perfil del usuario logueado pero no funciona
   // // const profileList = document.querySelector('.div_article_profile_user');
@@ -169,24 +154,6 @@ export const wall = () => {
   // //     profileList.innerHTML = 'login out';
   // //   }
   // // };
-
-  // // ver post de los usuarios
-  // const postList = document.querySelector('.article_publication_other_user');
-  // const configPosts = (data) => {
-  //   if (data.length) {
-  //     let articlePost = '';
-  //     data.forEach((doc) => {
-  //       const post = doc.data();
-  //       console.log(post);
-  //       const liPost = `
-  //     <li class="list_group_item"><h5>${post.description}</h5></li>`;
-  //       articlePost += liPost;
-  //     });
-  //     postList.innerHTML = articlePost;
-  //   } else {
-  //     postList.innerHTML = 'login out';
-  //   }
-  // };
 
   // // usuario tiene que estar logueado para acceder a la vista de los posts
   // onAuthStateChanged(auth, (nom) => {
