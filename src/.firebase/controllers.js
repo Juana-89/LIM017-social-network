@@ -1,7 +1,7 @@
 //Desacoplando funciones 
 import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, 
          signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, 
-         createUserWithEmailAndPassword, getDocs, onSnapshot, addDoc, collection, deleteDoc, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
+         createUserWithEmailAndPassword, getDocs, onSnapshot, addDoc, collection, updateDoc, deleteDoc, getDoc, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);
@@ -41,9 +41,14 @@ export const onAuthStateChangedFunction = (state) => {
 };
 
 // Ver datos de la bd
-export const getPost = () => {
+export const getPosts = () => {
    return getDocs(collection(db, 'posts')) 
 };
+
+// Ver dato de la bd para editar
+export const getPost = (id) => {
+    return getDoc(doc(db, 'posts', id)) 
+ };
 
 // Ver datos en tiempo real
 export const onGetSnapshot = (callback) => {
@@ -53,6 +58,11 @@ export const onGetSnapshot = (callback) => {
 //Guardar post del usuario
 export const savePostFunction = (post) => {
     setTimeout(() => {return addDoc(collection(db, '/posts'), { post })}, 1000);
+};
+
+//Editar post del usuario
+export const updatePost = (id, newPost) => {
+    return updateDoc(doc(db, '/posts', id), newPost);
 };
 
 //Eliminar post del usuario

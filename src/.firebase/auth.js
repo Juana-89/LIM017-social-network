@@ -1,10 +1,8 @@
 import { loginGmailFunction, loginFacebookFunction, signInUserFunction, 
          createNewUserFunction, sendEmailForgotPasswordFunction, onAuthStateChangedFunction , 
-         onGetSnapshot, savePostFunction, deletePost, logoutFunction } from '../.firebase/controllers.js';
+         onGetSnapshot, savePostFunction, getPost, updatePost, deletePost, logoutFunction } from '../.firebase/controllers.js';
 import { onNavigate } from '../main.js';
-import { getAuth, collection, getDocs , getFirestore} from '../.firebase/index.js'
-import { app } from '../.firebase/config.js';
-
+let editStatus = false;
 // Usuario puede loguearse con su cuenta de Gmail
 export const signInGmail = () => {
     return loginGmailFunction()
@@ -117,32 +115,66 @@ export const sendEmailForgotPassword = () => {
 // Usuario puede ver los post guardados en la bd en tiempo real
     window.addEventListener('DOMContentLoaded', async () => {
     onGetSnapshot((querySnapshot) => {
-    let postContainer = document.querySelector('.add_info_publication_users');
+    let postContainer = document.querySelector('.article_publication_other_user');
+    let postContainerEdit = document.querySelector('#text_description');
+    let id = '';
     console.log(postContainer)
    
     let articlePost = '';
     querySnapshot.forEach(doc => {
         const post = doc.data();
         console.log(post)
-        articlePost += `<h5>${post.post}</h5><button class="btn_delete_post" data-id=${doc.id}>Eliminar post&nbsp;
-        <i class="fa-solid fa-trash-can"></i></button><button class="btn_edit_post">&nbsp&nbspEditar post&nbsp;
-        <i class="fa-solid fa-pen-to-square"></i></button>`;
+        articlePost += ` <div class="add_info_publication_users"><h5>${post.post}</h5>
+        <button class="btn_delete_post" data-id=${doc.id}>Eliminar post&nbsp;<i class="fa-solid fa-trash-can"></i></button>
+        <button class="btn_edit_post"  data-id=${doc.id}>&nbsp&nbspEditar post&nbsp;<i class="fa-solid fa-pen-to-square"></i></button></div>`;
     })
     postContainer.innerHTML = articlePost
 
-    const btnDeletePost = postContainer.querySelectorAll('.btn_delete_post');
-    btnDeletePost.forEach(btnDelete => {
+    const btnsDeletePost = postContainer.querySelectorAll('.btn_delete_post');
+    btnsDeletePost.forEach((btnDelete) => {
         btnDelete.addEventListener('click', (e) => {
             console.log(e.target.dataset.id)
             deletePost(e.target.dataset.id)
 
         })
-    })
+    });
+
+    const btnsEditPost = postContainer.querySelectorAll('.btn_edit_post');
+    btnsEditPost.forEach((btnEdit) => {
+        btnEdit.addEventListener('click', async (e) => {
+            const doc = await getPost(e.target.dataset.id)
+            const post = doc.data();
+            console.log(post)
+
+            postContainerEdit.value = post.post;
+
+            editStatus = true;
+            id = doc.id
+            //const btnChangePostforEditPost = document.querySelector('#add_publication');
+            const btnAddEditPost = document.querySelector('#add_publication');
+            btnAddEditPost.style.display = 'none';
+            const btnEditPostMain = document.querySelector('#add_edit_publication');
+            btnEditPostMain.style.display = 'block';
+            //btnChangePostforEditPost.innerText = "Editar"
+            btnEditPostMain.addEventListener('click', () => {
+              
+                if (editStatus) {
+                    btnEditPostMain.style.display = 'block';
+                    btnAddEditPost.style.display = 'none';
+                    console.log("cargando")
+                    updatePost(id, {post: postContainerEdit.value})
+                    btnAddEditPost.style.display = 'block';
+                    btnEditPostMain.style.display = 'none';
+                }
+                editStatus = false;
+            });
+            
+          
+        })
+    });
 
     })
 });
-
-
 // // // // export const onAuthState = () => {
 // // // //     onAuthStateChangedFunction((state) => {
 // // // //     const db = getFirestore(app);

@@ -76,14 +76,19 @@ export const wall = () => {
 
     <div id="add_publication" class="add_info">
     <i class="fa-solid fa-bullhorn"></i>&nbsp;&nbsp;Publicar</div>
+
+    <div id="add_edit_publication" class="add_info">
+    <i class="fa-solid fa-user-pen"></i>&nbsp;&nbsp;Editar</div>
     </div>
     </div>
     `;
+  const addPost = document.createElement('button');
+  addPost.classList.add('btnPRUEBA');
+  addPost.textContent = 'Actualizar';
 
   const publicationOtherUser = document.createElement('div');
   publicationOtherUser.setAttribute('id', 'div_publication_other_user');
-  publicationOtherUser.innerHTML = `<div class="article_publication_other_user">
-  <div class="add_info_publication_users"></div>`;
+  publicationOtherUser.innerHTML = '<div class="article_publication_other_user">';
 
   const footer = document.createElement('footer');
   footer.classList.add('footer');
@@ -99,6 +104,7 @@ export const wall = () => {
   divWall.appendChild(publicationOtherUser);
   divWall.appendChild(sectionPublication);
   divWall.appendChild(footer);
+  divWall.appendChild(addPost);
   // const auth = getAuth(app);
   // const user = auth.currentUser;
   // const db = getFirestore(app);
@@ -221,6 +227,7 @@ export const wall = () => {
   });
   divWall.querySelector('#add_publication').addEventListener('click', () => {
     savePost();
+    divWall.querySelector('#text_description').value = '';
   });
 
   divWall.querySelector('#btn_logout').addEventListener('click', () => {
