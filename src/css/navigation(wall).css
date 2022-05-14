@@ -32,7 +32,7 @@ body{
     align-items: center;
     padding:10px;
     width: 300px;
-    height: 232em;
+    height: 202em;
     position: absolute;
 
 }
@@ -252,7 +252,7 @@ body::-webkit-scrollbar-thumb {
 .add_info_publication{
     position: absolute;
     display: flex;
-    background:#F03D33;
+    background:#ff2828;
     color: #fff;
     width: 100%;
     height: 40px;
@@ -323,10 +323,11 @@ font-family: 'Signika', sans-serif;
 }
 
 .btns_add_info:hover {
-    background: #FA5858;
+    background: #ff2828;
 }
 .footer{
-    text-align: center;
+    
+    margin-left: 550px;
 }
 .div_btns_add_info{
 position: relative;
@@ -338,4 +339,40 @@ justify-content: flex-end;
 
 #add_edit_publication{
     display: none;
+}
+.btns_add_like{
+    position: absolute;
+    left: 825px;
+    top:13px;
+    color: red;
+    border: none;
+    background: none;
+    font-size: 28px;
+    margin-left: -824px;
+    cursor: pointer;
+    transition: all 6300ms ease;
+}
+
+.btns_add_like:hover{
+    position: absolute;
+    left: 825px;
+    top:13px;
+    color: #Ed5C4F;
+    border: none;
+    background: none;
+    font-size: 28px;
+    margin-left: -824px;
+    cursor: pointer;
+    transition: all 0.5ms ease;
+}
+
+.inps_add_like{
+    position: absolute;
+    left: 825px;
+    top:26px;
+    border: none;
+    width:27px;
+    background: none;
+    font-size: 16px;
+    margin-left: -784px;
 }

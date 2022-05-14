@@ -57,7 +57,7 @@ export const onGetSnapshot = (callback) => {
 
 //Guardar post del usuario
 export const savePostFunction = (post) => {
-    setTimeout(() => {return addDoc(collection(db, '/posts'), { post })}, 1000);
+    setTimeout(() => {return addDoc(collection(db, '/posts'), { post: post })}, 1000);
 };
 
 //Editar post del usuario

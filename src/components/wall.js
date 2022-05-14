@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-shadow */
 /* eslint-disable import/no-cycle */
 
 import { savePost, logout } from '../.firebase/auth.js';
+import { getAuth, getFirestore, onAuthStateChanged } from '../.firebase/index.js';
+import { app } from '../.firebase/config.js';
 
 export const wall = () => {
   // document.write('probando');
   document.querySelector('.container_video').remove();
   const divWall = document.querySelector('main');
+ 
   const header = document.createElement('header');
   header.setAttribute('id', 'header_navigation');
   header.innerHTML = `<div class="logo">
@@ -59,10 +63,10 @@ export const wall = () => {
   const profileInfo = document.createElement('article');
   profileInfo.setAttribute('id', 'article_profile_user');
   profileInfo.innerHTML = `<div class="div_article_profile_user">
-  <h2 id="h2_perfil">Perfil</h2><br>
-  <h3 id="h3_perfil"><i class="fa-solid fa-user"></i>&nbsp;Usuario: DinaTM</h3><br>
-  <h3 id="h3_perfil"><i class="fa-solid fa-heart"></i>&nbsp;Nombre: Dina Talavera Mark</h3><br>
-  <h3 id="h3_perfil"><i class="fa-solid fa-at"></i>&nbsp;E-mail: dinatm@gmail.com</h3>
+    <h2 id="h2_perfil">Datos del usuario</h2><br>
+    <h3 id="h3_perfil"><i class="fa-solid fa-user"></i>&nbsp;Usuario: <span id="span_nom_id" class="span_perfile_user"></span></h3><br>
+    <h3 id="h3_perfil"><i class="fa-solid fa-heart"></i>&nbsp;Nombre: <span id="span_nom_user" class="span_perfile_user"></span></h3><br>
+    <h3 id="h3_perfil"><i class="fa-solid fa-at"></i>&nbsp;E-mail: <span id="span_email_user" class="span_perfile_user"></span></h3>
     </div>`;
 
   const sectionPublication = document.createElement('section');
@@ -73,10 +77,10 @@ export const wall = () => {
   publicationUser.setAttribute('id', 'div_publication_user');
   publicationUser.innerHTML = `<article class="article_publication_user">
  
-  <h3 id="h3_publication_user">¿Qué quieres publicar?</h3>
-  <textarea id="text_description" rows="3" placeholder="Escribe la descripción"></textarea>  
-    
-  <div class="add_info_publication">
+    <h3 id="h3_publication_user">¿Qué quieres publicar?</h3>
+    <textarea id="text_description" rows="3" placeholder="Escribe la descripción"></textarea>  
+      
+    <div class="add_info_publication">
     <div id="add_photo_publication" class="add_info">
     <input type="file" id="file_photo_publication" name="file_photo_publication">
     <i class="fa-solid fa-image"></i>&nbsp;&nbsp;Agregar Foto</div>&nbsp;&nbsp;
@@ -92,7 +96,7 @@ export const wall = () => {
 
   const publicationOtherUser = document.createElement('div');
   publicationOtherUser.setAttribute('id', 'div_publication_other_user');
-  publicationOtherUser.innerHTML = '<div class="article_publication_other_user">';
+  publicationOtherUser.innerHTML = '<div class="article_publication_other_user"></div>';
 
   const footer = document.createElement('footer');
   footer.classList.add('footer');
@@ -108,28 +112,31 @@ export const wall = () => {
   divWall.appendChild(publicationOtherUser);
   divWall.appendChild(sectionPublication);
   divWall.appendChild(footer);
-  // const auth = getAuth(app);
-  // const user = auth.currentUser;
-  // const db = getFirestore(app);
-  // //inicio sesión
-  //   onAuthStateChanged(auth, (nom) => {
-  //     if (user !== null) {
-  //       // muestra los datos del usuario ingresado
-  //       user.providerData.forEach((profile) => {
-  //         console.log(`Sign-in provider: ${profile.providerId}`);
-  //         console.log(`  Provider-specific UID: ${profile.uid}`);
-  //         console.log(`  Name: ${profile.displayName}`);
-  //         console.log(`  Email: ${profile.email}`);
-  //         console.log(`  Photo URL: ${profile.photoURL}`);
-  //       });
 
-  //       console.log('juanaaaaaaaaaaaa');
-  //     } else {
-  //       // User is signed out
-  //       // ...
-  //       console.log('nooooooooooooooo');
-  //     }
-  //   });
+  const auth = getAuth(app);
+  const user = auth.currentUser;
+  // inicio sesión
+  onAuthStateChanged(auth, () => {
+    if (user !== null) {
+      // muestra los datos del usuario ingresado
+      user.providerData.forEach((profile) => {
+        console.log(`Sign-in provider: ${profile.providerId}`);
+        console.log(`  Provider-specific UID: ${profile.uid}`);
+        console.log(`  Name: ${profile.displayName}`);
+        console.log(`  Email: ${profile.email}`);
+        console.log(`  Photo URL: ${profile.photoURL}`);
+        document.querySelector('#span_nom_id').innerHTML += (`${profile.uid}`);
+        document.querySelector('#span_nom_user').innerHTML += (`${profile.displayName}`);
+        document.querySelector('#span_email_user').innerHTML += (`${profile.email}`);
+      });
+
+      console.log('juanaaaaaaaaaaaa');
+    } else {
+      // User is signed out
+      // ...
+      console.log('nooooooooooooooo');
+    }
+  });
   // //muestra si la bd tiene datos almacenados
   //   getDocs(collection(db, 'posts'))
   //   .then((snapshot) => {
@@ -197,7 +204,8 @@ export const wall = () => {
     divWall.querySelector('#text_description').value = '';
   });
 
-  divWall.querySelector('#btn_logout').addEventListener('click', () => {
+  divWall.querySelector('#btn_logout').addEventListener('click', (e) => {
+    e.preventDefault();
     logout();
   });
   return divWall;
