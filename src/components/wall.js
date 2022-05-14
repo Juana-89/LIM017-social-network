@@ -4,7 +4,7 @@
 /* eslint-disable import/no-cycle */
 
 import { savePost, logout } from '../.firebase/auth.js';
-import { getAuth, getFirestore, onAuthStateChanged } from '../.firebase/index.js';
+import { getAuth, getFirestore, onAuthStateChanged, getStorage, ref } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 export const wall = () => {
@@ -79,7 +79,9 @@ export const wall = () => {
  
     <h3 id="h3_publication_user">¿Qué quieres publicar?</h3>
     <textarea id="text_description" rows="3" placeholder="Escribe la descripción"></textarea>  
-      
+    
+    <div id="add_image_post" border ="2" ></div>
+    
     <div class="add_info_publication">
     <div id="add_photo_publication" class="add_info">
     <input type="file" id="file_photo_publication" name="file_photo_publication">
@@ -191,13 +193,17 @@ export const wall = () => {
     document.getElementById('file_photo').click();
   });
 
-  divWall.querySelector('#add_photo_publication').addEventListener('click', () => {
+  divWall.querySelector('#add_photo_publication').addEventListener('change', () => {
     document.getElementById('file_photo_publication').click();
     // function uploadImagePost() {
     //   const storage = getStorage().ref();
     //   const fileImage = document.querySelector('#file_photo_publication').files[0];
     //   console.log(storage, fileImage);
     // }
+
+    const divLoadImage = document.querySelector('#add_image_post')
+    console.log(divLoadImage)
+
   });
   divWall.querySelector('#add_publication').addEventListener('click', () => {
     savePost();

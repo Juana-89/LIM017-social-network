@@ -32,7 +32,7 @@ body{
     align-items: center;
     padding:10px;
     width: 300px;
-    height: 202em;
+    height: 272em;
     position: absolute;
 
 }
@@ -103,13 +103,13 @@ body{
 }
 
 .btn_edit_cover{
-position: absolute;
-margin-top: 300px;
-margin-left: 712px;
-border-radius: 5px;
-cursor:pointer;
-font-family: 'Signika', sans-serif;
-font-size: 16px;
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 712px;
+    border-radius: 5px;
+    cursor:pointer;
+    font-family: 'Signika', sans-serif;
+    font-size: 16px;
 }
 
 /*aside profile de photo user*/
@@ -147,12 +147,12 @@ picture {
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-
 }
 
 .fa-camera{
     font-size: 25px;
 }
+
 #article_profile_user {
     /* background-color: red; */
     color: #fff;
@@ -169,14 +169,18 @@ picture {
 
     font-family: 'Signika', sans-serif;
     font-size: 22px;
-    }
+}
 
 #h2_perfil{
     margin-bottom:10px;
     text-align: center;
 }
+
 /*ventana dashboard del user*/
 @media only screen and (min-width: 360px) and (max-width: 800px){
+    .header_navigation_profile, .header_img {
+        display:none;
+    }
     .btn-bar{
         display:block;
     }
@@ -215,17 +219,70 @@ picture {
         width: 40px;
         height: 40px;
     }
-    /* .img_photo_user{
-        width: 160px;
-        height: 160px;
-} */
-}
 
+    .footer {
+        margin-left: 50px !important;
+        margin-top: 248px !important;
+    }
+
+    #div_cover{
+        margin-left: 0;
+        width: 375px;
+        height: 252px;
+        border-radius: 0 0 20px;
+    }
+
+    .btn_edit_cover{
+        margin-left: 212px;
+        top: -246px;
+    }
+
+    .img_photo_user{
+        left: 137px;
+        top: -148px;
+        width: 230px;
+        height: 230px;
+    }
+
+    .btn_edit_photo{
+        top: 48px;
+        left: 319px;
+    }
+    
+    #div_publication_user{
+        left: 7px !important;
+        top: 148px !important;
+        width: 372px !important;
+        border-radius:20px !important;
+    }
+
+    #text_description{
+        left: 7px;
+        top: 148px;
+        width: 372px !important;
+    }
+
+    #article_profile_user{
+        left: 37px;
+        top: 78px;
+        background-color: #fff;
+        color: #686462;
+        height: 219px;
+        border-radius: 20px;
+    }
+
+    #div_publication_other_user{
+        left: 7px !important;
+        top: 198px !important;
+        width: 382px !important;
+    }
+}
 /*scroll personalizado*/
 body::-webkit-scrollbar{
     width: 7px;
     background: #520b12;
 }
+
 body::-webkit-scrollbar-thumb {
     background: #f5e1f6;
 	border-right: 10px;
@@ -240,6 +297,7 @@ body::-webkit-scrollbar-thumb {
     width: 888px;
 
 }
+
 #div_publication_user{
     background-color: #fff;
     width: 622px;
@@ -249,6 +307,7 @@ body::-webkit-scrollbar-thumb {
     top: -248px;
     border-radius: 10px;
 }
+
 .add_info_publication{
     position: absolute;
     display: flex;
@@ -259,8 +318,9 @@ body::-webkit-scrollbar-thumb {
     top: 211px;
     border-radius: 0 0 10px 10px;
 }
+
 #h3_publication_user{
-font-family: 'Signika', sans-serif;
+    font-family: 'Signika', sans-serif;
 }
 
 .add_info{
@@ -271,11 +331,12 @@ font-family: 'Signika', sans-serif;
     padding-left: 105px;
     transition: 0.25s;
 }
+
 .add_info:hover{
     background:#180A0A;
     cursor: pointer;
     border-radius: 0 0 10px 10px;
-    }
+}
     
 #file_cover, #file_photo, #file_photo_publication{
     display: none;
@@ -288,12 +349,14 @@ font-family: 'Signika', sans-serif;
     left: 527px;
     top: -148px;
 }
+
 .add_info_publication_users{
     background-color: #fff;
     border-radius: 10px;
     margin-top: 50px;
     padding: 50px 20px 10px;
 }
+
 #text_description{
     border: none;
     width: 622px;
@@ -330,11 +393,11 @@ font-family: 'Signika', sans-serif;
     margin-left: 550px;
 }
 .div_btns_add_info{
-position: relative;
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;
-justify-content: flex-end;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 #add_edit_publication{
@@ -376,3 +439,9 @@ justify-content: flex-end;
     font-size: 16px;
     margin-left: -784px;
 }
+
+/* #add_image_post{
+    position: relative;
+    background: #5352ed;
+    border: 85px solid #5352ed;
+} */

@@ -1,7 +1,8 @@
 import { loginGmailFunction, loginFacebookFunction, signInUserFunction, 
     createNewUserFunction, sendEmailForgotPasswordFunction, onAuthStateChangedFunction , 
     onGetSnapshot, savePostFunction, getPost, updatePost, deletePost, logoutFunction } from '../.firebase/controllers.js';
-    
+
+import { onNavigate } from '../main.js'
 let editStatus = false;
 // Usuario puede loguearse con su cuenta de Gmail
 export const signInGmail = () => {
@@ -246,3 +247,27 @@ export const logout = () => {
         });
 };
 
+// funcion para descargar la imagen del storage a la publicación
+async function dowloadImage(imagePreview, image) {
+  await getDownloadURL(ref(storage, `image-publication/${image}`))
+    .then((url) => {
+      imagePreview.setAttribute('src', url);
+    }).catch((error) => {
+    });
+}
+// funcion para subir la imagen de la publicación al storage
+export async function publicationUser(image, imagePreview, logoChange) {
+  let result = '';
+  const publicationRef = ref(storage, `image-publication/${image.name}`);
+  const upload = await uploadBytesResumable(publicationRef, image);
+  function time() {
+    // eslint-disable-next-line no-param-reassign
+    logoChange.display = 'none';
+  }
+  if (upload.state === 'success') {
+    setTimeout(time, 500);
+  }
+  result = true;
+  await dowloadImage(imagePreview, image.name);
+  return result;
+}

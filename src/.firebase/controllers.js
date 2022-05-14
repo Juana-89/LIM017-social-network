@@ -60,6 +60,17 @@ export const savePostFunction = (post) => {
     setTimeout(() => {return addDoc(collection(db, '/posts'), { post: post })}, 1000);
 };
 
+//probando
+// export const savePostFunction = (post) => {
+//     setTimeout(() => {return addDoc(collection(db, '/posts'), { uid: getCurrentUser().uid,
+//         user: getCurrentUser().email,
+//         post: post,
+//         date: new date(),
+//         photo:getCurrentUser().photoURL,
+//         likes: [],
+//      })}, 1000);
+// };
+
 //Editar post del usuario
 export const updatePost = (id, newPost) => {
     return updateDoc(doc(db, '/posts', id), newPost);
