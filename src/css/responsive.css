@@ -13,9 +13,22 @@
     .btn_start {
     top: 65%;
     }
-    /* .form_info{
+    .form_info{
     margin: 50%;
-    }    */
+    }
+    .form_forgot_password {
+    margin: 50%;
+    }
+    .form_create_user {
+    margin: 50%;
+    }
+    .form_register{
+    margin: 50%;
+    }
+    .form_inp_create{
+    width: 210px;
+    height: 30px;
+    }
 }
 
 @media only screen and (min-width: 360px) and (max-width: 767px){
@@ -34,12 +47,22 @@
     .btn_start {
     top: 69%;
     }
-    /* .form_info{
+    .form_info{
     margin: 50%;
-    } */
-    /* .form_forgot_password{
+    }
+    .form_forgot_password {
     margin: 50%;
-    } */
+    }
+    .form_create_user {
+    margin: 50%;
+    }
+    .form_register{
+    margin: 50%;
+    }
+    .form_inp_create{
+    width: 210px;
+    height: 30px;
+    }
 }
 /*galaxy fold*/
 @media only screen and (min-width: 280px) and (max-width: 359px){
@@ -61,11 +84,21 @@
     width: 80px;
     height: 40px;
     }
-    /* .form_info{
+    .form_info{
     margin: 50%;
-    } */
+    }
     .form_h1_title{
     font-size: 20px;
-    }   
+    padding-top: 14px;
+    }
+    .form_register{
+    width: 250px;
+    margin-top: 50%;
+    padding: 20px;
+    }
+    .form_inp_create{
+    width: 210px;
+    height: 35px;
+    }
 }
 
