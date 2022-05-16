@@ -247,21 +247,10 @@
 .form_h2_title{
     color: #fff;
 }
-
-/* 
-.div_footer{
-    position: absolute;
-}
-.footer{
+/* .div_footer{
     z-index:1;
     text-align: center;
     margin-top: -30px;
-    position: absolute;
-}
-.img_footer{
-    z-index:-1;
     position: relative;
-    width:30px;
-    height:30px;
-    margin-top: 0px;
+    color: #fff;
 } */

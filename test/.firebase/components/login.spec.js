@@ -14,7 +14,7 @@ describe('Probando login', () => {
   });
 });
 
-describe('Éxito al loguearse', async() => {
+describe('Éxito al loguearse', () => {
   fit('debería poder loguearse si tiene cuenta registrada', (done) => {
     const signIn = jest.fn((email, password) => Promise.resolve({email,password}));
     const success = login();
@@ -27,8 +27,8 @@ describe('Éxito al loguearse', async() => {
     
     btnLogin.dispatchEvent(new Event('click'));
     setTimeout(() => {
-    await signIn(inpEmail, inpPassword)
-      expect(window.location.pathname).toBe('Auth/Password are co');
+    signIn(inpEmail, inpPassword)
+      expect(onNavigate('/login')).toBe(success);
     done();
   //}));
  });

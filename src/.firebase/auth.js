@@ -2,6 +2,10 @@ import { loginGmailFunction, loginFacebookFunction, signInUserFunction,
     createNewUserFunction, sendEmailForgotPasswordFunction, onAuthStateChangedFunction , 
     onGetSnapshot, savePostFunction, getPost, updatePost, deletePost, logoutFunction } from '../.firebase/controllers.js';
 
+    import { getAuth, getFirestore, onAuthStateChanged, getStorage, ref } from '../.firebase/index.js';
+import { app } from '../.firebase/config.js';
+
+
 import { onNavigate } from '../main.js'
 let editStatus = false;
 // Usuario puede loguearse con su cuenta de Gmail
@@ -113,8 +117,12 @@ export const sendEmailForgotPassword = () => {
 // return false;
 }
 
+
+
+
 // Usuario puede ver los post guardados en la bd en tiempo real
-window.addEventListener('DOMContentLoaded', async () => {
+
+window.addEventListener('DOMContentLoaded', async () => {    
         onGetSnapshot((querySnapshot) => {
         let postContainer = document.querySelector('.article_publication_other_user');
         let postContainerEdit = document.querySelector('#text_description');
@@ -122,6 +130,23 @@ window.addEventListener('DOMContentLoaded', async () => {
         let articlePost = '';
 
         querySnapshot.forEach(doc => {
+          const auth = getAuth(app);
+          const user = auth.currentUser;
+
+onAuthStateChanged(auth, () => {
+  if (user !== null) {
+    // muestra los datos del usuario ingresado
+    user.providerData.forEach((profile) => {
+      console.log(`Sign-in provider: ${profile.providerId}`);
+      console.log(`  Provider-specific UID: ${profile.uid}`);
+      console.log(`  Name: ${profile.displayName}`);
+      console.log(`  Email: ${profile.email}`);
+      console.log(`  Photo URL: ${profile.photoURL}`);
+      document.querySelector('#span_nom_id').innerHTML += (`${profile.uid}`);
+      document.querySelector('#span_nom_user').innerHTML += (`${profile.displayName}`);
+      document.querySelector('#span_email_user').innerHTML += (`${profile.email}`);
+     
+  
         const post = doc.data();
         console.log(post)
         articlePost += ` <div class="add_info_publication_users"><h5>${post.post}</h5>
@@ -134,22 +159,22 @@ window.addEventListener('DOMContentLoaded', async () => {
         postContainer.innerHTML = articlePost;
 
         //prueba de likely
-        const btnsLikePosts = postContainer.querySelectorAll('.btns_add_like');
-        let inptsQuantityLikes = postContainer.querySelectorAll('.inps_add_like');
+        // const btnsLikePosts = postContainer.querySelectorAll('.btns_add_like');
+        // let inptsQuantityLikes = postContainer.querySelectorAll('.inps_add_like');
       
-        btnsLikePosts.forEach((btnLike) => {
-        btnLike.addEventListener('click', () => {
-            let conta = 0
+        // btnsLikePosts.forEach((btnLike) => {
+        // btnLike.addEventListener('click', () => {
+        //     let conta = 0
            
-            conta++ 
+        //     conta++ 
         
-        //console.log(inptsQuantityLikes = parseInt(inptsQuantityLikes) + 1)
+        // //console.log(inptsQuantityLikes = parseInt(inptsQuantityLikes) + 1)
 
-          console.log(conta)
-          inptsQuantityLikes += conta
+        //   console.log(conta)
+        //   inptsQuantityLikes += conta
      
-        })
-        })
+        // })
+        // })
 
         const btnsDeletePost = postContainer.querySelectorAll('#btn_delete_post');
         btnsDeletePost.forEach((btnDelete) => {
@@ -206,9 +231,18 @@ window.addEventListener('DOMContentLoaded', async () => {
         editStatus = false;
         });
         })
-        });
+        })} else {
+          // User is signed out
+          // ...
+          console.log('nooooooooooooooo');
+          postContainer.innerHTML += "debes de loguearte"
+        }
+      });
         })
+        
 });
+});
+
 
 // Guarda publicación del usuario activo
 export const savePost = () => {
@@ -246,28 +280,3 @@ export const logout = () => {
         return false
         });
 };
-
-// funcion para descargar la imagen del storage a la publicación
-async function dowloadImage(imagePreview, image) {
-  await getDownloadURL(ref(storage, `image-publication/${image}`))
-    .then((url) => {
-      imagePreview.setAttribute('src', url);
-    }).catch((error) => {
-    });
-}
-// funcion para subir la imagen de la publicación al storage
-export async function publicationUser(image, imagePreview, logoChange) {
-  let result = '';
-  const publicationRef = ref(storage, `image-publication/${image.name}`);
-  const upload = await uploadBytesResumable(publicationRef, image);
-  function time() {
-    // eslint-disable-next-line no-param-reassign
-    logoChange.display = 'none';
-  }
-  if (upload.state === 'success') {
-    setTimeout(time, 500);
-  }
-  result = true;
-  await dowloadImage(imagePreview, image.name);
-  return result;
-}

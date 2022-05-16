@@ -4,8 +4,8 @@
 /* eslint-disable import/no-cycle */
 
 import { savePost, logout } from '../.firebase/auth.js';
-import { getAuth, getFirestore, onAuthStateChanged, getStorage, ref } from '../.firebase/index.js';
-import { app } from '../.firebase/config.js';
+// import { getAuth, getFirestore, onAuthStateChanged, getStorage, ref } from '../.firebase/index.js';
+// import { app } from '../.firebase/config.js';
 
 export const wall = () => {
   // document.write('probando');
@@ -115,30 +115,30 @@ export const wall = () => {
   divWall.appendChild(sectionPublication);
   divWall.appendChild(footer);
 
-  const auth = getAuth(app);
-  const user = auth.currentUser;
+  // const auth = getAuth(app);
+  // const user = auth.currentUser;
   // inicio sesión
-  onAuthStateChanged(auth, () => {
-    if (user !== null) {
-      // muestra los datos del usuario ingresado
-      user.providerData.forEach((profile) => {
-        console.log(`Sign-in provider: ${profile.providerId}`);
-        console.log(`  Provider-specific UID: ${profile.uid}`);
-        console.log(`  Name: ${profile.displayName}`);
-        console.log(`  Email: ${profile.email}`);
-        console.log(`  Photo URL: ${profile.photoURL}`);
-        document.querySelector('#span_nom_id').innerHTML += (`${profile.uid}`);
-        document.querySelector('#span_nom_user').innerHTML += (`${profile.displayName}`);
-        document.querySelector('#span_email_user').innerHTML += (`${profile.email}`);
-      });
+  // onAuthStateChanged(auth, () => {
+  //   if (user !== null) {
+  //     // muestra los datos del usuario ingresado
+  //     user.providerData.forEach((profile) => {
+  //       console.log(`Sign-in provider: ${profile.providerId}`);
+  //       console.log(`  Provider-specific UID: ${profile.uid}`);
+  //       console.log(`  Name: ${profile.displayName}`);
+  //       console.log(`  Email: ${profile.email}`);
+  //       console.log(`  Photo URL: ${profile.photoURL}`);
+  //       document.querySelector('#span_nom_id').innerHTML += (`${profile.uid}`);
+  //       document.querySelector('#span_nom_user').innerHTML += (`${profile.displayName}`);
+  //       document.querySelector('#span_email_user').innerHTML += (`${profile.email}`);
+  //     });
 
-      console.log('juanaaaaaaaaaaaa');
-    } else {
-      // User is signed out
-      // ...
-      console.log('nooooooooooooooo');
-    }
-  });
+  //     console.log('juanaaaaaaaaaaaa');
+  //   } else {
+  //     // User is signed out
+  //     // ...
+  //     console.log('nooooooooooooooo');
+  //   }
+  // });
   // //muestra si la bd tiene datos almacenados
   //   getDocs(collection(db, 'posts'))
   //   .then((snapshot) => {
