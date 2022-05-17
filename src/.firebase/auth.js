@@ -122,126 +122,126 @@ export const sendEmailForgotPassword = () => {
 
 // Usuario puede ver los post guardados en la bd en tiempo real
 
-window.addEventListener('DOMContentLoaded', async () => {    
-        onGetSnapshot((querySnapshot) => {
-        let postContainer = document.querySelector('.article_publication_other_user');
-        let postContainerEdit = document.querySelector('#text_description');
-        let id = '';
-        let articlePost = '';
+// window.addEventListener('DOMContentLoaded', async () => {    
+//         onGetSnapshot((querySnapshot) => {
+//         let postContainer = document.querySelector('.article_publication_other_user');
+//         let postContainerEdit = document.querySelector('#text_description');
+//         let id = '';
+//         let articlePost = '';
 
-        querySnapshot.forEach(doc => {
-          const auth = getAuth(app);
-          const user = auth.currentUser;
+//         querySnapshot.forEach(doc => {
+//           const auth = getAuth(app);
+//           const user = auth.currentUser;
 
-onAuthStateChanged(auth, () => {
-  if (user !== null) {
-    // muestra los datos del usuario ingresado
-    user.providerData.forEach((profile) => {
-      console.log(`Sign-in provider: ${profile.providerId}`);
-      console.log(`  Provider-specific UID: ${profile.uid}`);
-      console.log(`  Name: ${profile.displayName}`);
-      console.log(`  Email: ${profile.email}`);
-      console.log(`  Photo URL: ${profile.photoURL}`);
-      document.querySelector('#span_nom_id').innerHTML += (`${profile.uid}`);
-      document.querySelector('#span_nom_user').innerHTML += (`${profile.displayName}`);
-      document.querySelector('#span_email_user').innerHTML += (`${profile.email}`);
+// onAuthStateChanged(auth, () => {
+//   if (user !== null) {
+//     // muestra los datos del usuario ingresado
+//     user.providerData.forEach((profile) => {
+//       console.log(`Sign-in provider: ${profile.providerId}`);
+//       console.log(`  Provider-specific UID: ${profile.uid}`);
+//       console.log(`  Name: ${profile.displayName}`);
+//       console.log(`  Email: ${profile.email}`);
+//       console.log(`  Photo URL: ${profile.photoURL}`);
+//       document.querySelector('#span_nom_id').innerHTML += (`${profile.uid}`);
+//       document.querySelector('#span_nom_user').innerHTML += (`${profile.displayName}`);
+//       document.querySelector('#span_email_user').innerHTML += (`${profile.email}`);
      
   
-        const post = doc.data();
-        console.log(post)
-        articlePost += ` <div class="add_info_publication_users"><h5>${post.post}</h5>
-        <div class="div_btns_add_info">
-        <button id="btn_like" class="btns_add_like"><i class="fa-solid fa-heart"></i></button><input type="number" id="inps_like" class="inps_add_like" value="0">
-        <button id="btn_delete_post" class="btns_add_info" data-id=${doc.id}>Eliminar&nbsp<i class="fa-solid fa-trash-can"></i></button>
-        <button id="btn_edit_post" class="btns_add_info" data-id=${doc.id}>Editar <i class="fa-solid fa-pen-to-square"></i></button></div>
-        </div>`
-        })
-        postContainer.innerHTML = articlePost;
+//         const post = doc.data();
+//         console.log(post)
+//         articlePost += ` <div class="add_info_publication_users"><h5>${post.post}</h5>
+//         <div class="div_btns_add_info">
+//         <button id="btn_like" class="btns_add_like"><i class="fa-solid fa-heart"></i></button><input type="number" id="inps_like" class="inps_add_like" value="0">
+//         <button id="btn_delete_post" class="btns_add_info" data-id=${doc.id}>Eliminar&nbsp<i class="fa-solid fa-trash-can"></i></button>
+//         <button id="btn_edit_post" class="btns_add_info" data-id=${doc.id}>Editar <i class="fa-solid fa-pen-to-square"></i></button></div>
+//         </div>`
+//         })
+//         postContainer.innerHTML += articlePost;
 
-        //prueba de likely
-        // const btnsLikePosts = postContainer.querySelectorAll('.btns_add_like');
-        // let inptsQuantityLikes = postContainer.querySelectorAll('.inps_add_like');
+//         //prueba de likely
+//         // const btnsLikePosts = postContainer.querySelectorAll('.btns_add_like');
+//         // let inptsQuantityLikes = postContainer.querySelectorAll('.inps_add_like');
       
-        // btnsLikePosts.forEach((btnLike) => {
-        // btnLike.addEventListener('click', () => {
-        //     let conta = 0
+//         // btnsLikePosts.forEach((btnLike) => {
+//         // btnLike.addEventListener('click', () => {
+//         //     let conta = 0
            
-        //     conta++ 
+//         //     conta++ 
         
-        // //console.log(inptsQuantityLikes = parseInt(inptsQuantityLikes) + 1)
+//         // //console.log(inptsQuantityLikes = parseInt(inptsQuantityLikes) + 1)
 
-        //   console.log(conta)
-        //   inptsQuantityLikes += conta
+//         //   console.log(conta)
+//         //   inptsQuantityLikes += conta
      
-        // })
-        // })
+//         // })
+//         // })
 
-        const btnsDeletePost = postContainer.querySelectorAll('#btn_delete_post');
-        btnsDeletePost.forEach((btnDelete) => {
-        btnDelete.addEventListener('click', (e) => {
-        deletePost(e.target.dataset.id)
-        Swal.fire({
-        titleText: 'Eliminado',
-        icon: 'success',
-        timer:2000,
-        timerProgressBar: true,
-        toast: true,
-        position: 'bottom-end',
-        allowOutsideClick: false
-        });
-        })
-    });
+//         const btnsDeletePost = postContainer.querySelectorAll('#btn_delete_post');
+//         btnsDeletePost.forEach((btnDelete) => {
+//         btnDelete.addEventListener('click', (e) => {
+//         deletePost(e.target.dataset.id)
+//         Swal.fire({
+//         titleText: 'Eliminado',
+//         icon: 'success',
+//         timer:2000,
+//         timerProgressBar: true,
+//         toast: true,
+//         position: 'bottom-end',
+//         allowOutsideClick: false
+//         });
+//         })
+//     });
 
-        const btnsEditPost = postContainer.querySelectorAll('#btn_edit_post');
-        btnsEditPost.forEach((btnEdit) => {
-        btnEdit.addEventListener('click', async (e) => {
-        const doc = await getPost(e.target.dataset.id)
-        const post = doc.data();
-        console.log(post)
+//         const btnsEditPost = postContainer.querySelectorAll('#btn_edit_post');
+//         btnsEditPost.forEach((btnEdit) => {
+//         btnEdit.addEventListener('click', async (e) => {
+//         const doc = await getPost(e.target.dataset.id)
+//         const post = doc.data();
+//         console.log(post)
 
-        postContainerEdit.value = post.post;
-        editStatus = true;
-        id = doc.id
+//         postContainerEdit.value = post.post;
+//         editStatus = true;
+//         id = doc.id
 
-        const btnAddEditPost = document.querySelector('#add_publication');
-        btnAddEditPost.style.display = 'none';
-        const btnEditPostMain = document.querySelector('#add_edit_publication');
-        btnEditPostMain.style.display = 'block';
-        btnEditPostMain.addEventListener('click', () => {
+//         const btnAddEditPost = document.querySelector('#add_publication');
+//         btnAddEditPost.style.display = 'none';
+//         const btnEditPostMain = document.querySelector('#add_edit_publication');
+//         btnEditPostMain.style.display = 'block';
+//         btnEditPostMain.addEventListener('click', () => {
                 
-        if (editStatus) {
-        btnEditPostMain.style.display = 'block';
-        btnAddEditPost.style.display = 'none';
-        console.log("cargando")
-        updatePost(id, {post: postContainerEdit.value})
-        Swal.fire({
-        titleText: 'Editado',
-        icon: 'success',
-        timer:2000,
-        timerProgressBar: true,
-        toast: true,
-        position: 'bottom-end',
-        allowOutsideClick: false
-        });
-        btnAddEditPost.style.display = 'block'
-        btnEditPostMain.style.display = 'none'
+//         if (editStatus) {
+//         btnEditPostMain.style.display = 'block';
+//         btnAddEditPost.style.display = 'none';
+//         console.log("cargando")
+//         updatePost(id, {post: postContainerEdit.value})
+//         Swal.fire({
+//         titleText: 'Editado',
+//         icon: 'success',
+//         timer:2000,
+//         timerProgressBar: true,
+//         toast: true,
+//         position: 'bottom-end',
+//         allowOutsideClick: false
+//         });
+//         btnAddEditPost.style.display = 'block'
+//         btnEditPostMain.style.display = 'none'
 
-        }
-        postContainerEdit.value = ''
-        editStatus = false;
-        });
-        })
-        })} else {
-          // User is signed out
-          // ...
-          console.log('nooooooooooooooo');
-          postContainer.innerHTML += "debes de loguearte"
-        }
-      });
-        })
+//         }
+//         postContainerEdit.value = ''
+//         editStatus = false;
+//         });
+//         })
+//         })} else {
+//           // User is signed out
+//           // ...
+//           console.log('nooooooooooooooo');
+//           postContainer.innerHTML += "debes de loguearte"
+//         }
+//       });
+//         })
         
-});
-});
+// });
+// });
 
 
 // Guarda publicación del usuario activo
