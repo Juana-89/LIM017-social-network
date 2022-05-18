@@ -4,6 +4,7 @@ import { savePost, logout } from '../.firebase/auth.js';
 import { onGetSnapshot, updatePost, deletePost } from '../.firebase/controllers.js';
 import { getAuth, onAuthStateChanged } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
+import { onNavigate } from '../main.js';
 
 export const wall = () => {
   // document.write('probando');
@@ -171,18 +172,13 @@ export const wall = () => {
           // prueba de likely
           // const btnsLikePosts = postContainer.querySelectorAll('.btns_add_like');
           // let inptsQuantityLikes = postContainer.querySelectorAll('.inps_add_like');
-
           // btnsLikePosts.forEach((btnLike) => {
           // btnLike.addEventListener('click', () => {
           //     let conta = 0
-
           //     conta++
-
           // //console.log(inptsQuantityLikes = parseInt(inptsQuantityLikes) + 1)
-
           //   console.log(conta)
           //   inptsQuantityLikes += conta
-
           // })
           // })
 
@@ -244,6 +240,16 @@ export const wall = () => {
       });
     } else {
       postContainer.innerHTML += 'Tienes que loguearte para ver los posts de nuestra red social. ¡Te esperamos!';
+      Swal.fire({
+        title: 'No puedes ver los posts',
+        text: 'Te invitamos a iniciar sesión o a registrarte para ver los posts de nuestra red social. ¡Te esperamos!',
+        icon: 'warning',
+        grow: 'fullscreen',
+        background: '#fff',
+        backdrop: true,
+        allowOutsideClick: true,
+        stopKeydownPropagation: true,
+      });
     }
   });
   return divWall;
