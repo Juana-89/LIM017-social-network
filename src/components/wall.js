@@ -4,7 +4,6 @@ import { savePost, logout } from '../.firebase/auth.js';
 import { onGetSnapshot, updatePost, deletePost } from '../.firebase/controllers.js';
 import { getAuth, onAuthStateChanged } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
-import { onNavigate } from '../main.js';
 
 export const wall = () => {
   // document.write('probando');
