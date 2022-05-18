@@ -49,7 +49,7 @@ Mientras se iba terminando una vista, se consultaba con otras personas para tene
 <br>
 
 ### **4.3 Página de 'Olvíde contraseña'** <a href="https://i.ibb.co/gJ6q7Mc/view3.png"><img src="https://i.ibb.co/gJ6q7Mc/view3.png" width="200px" height="100px" align="right"></a>
-<p alin="justify">Si te olvidaste la contraseña de tu cuenta creada, puedes recuperarla, solo con colocar el correo registrado te llegará un mensaje de confirmación a tu bandeja, por lo que bastará que hagas click a ese enlace y escribas una nueva contraseña</p>
+<p alin="justify">Si te olvidaste la contraseña de tu cuenta creada, puedes recuperarla, solo con colocar el correo registrado te llegará un mensaje de confirmación a tu bandeja, por lo que bastará que hagas click a ese enlace y escribas una nueva contraseña.</p>
 <br>
 
 ### **4.4 Página de 'Crear cuenta'** <a href="https://i.ibb.co/BsSspY5/view4.png"><img src="https://i.ibb.co/BsSspY5/view4.png" width="200px" height="100px" align="right"></a>
@@ -61,7 +61,7 @@ Mientras se iba terminando una vista, se consultaba con otras personas para tene
 <br>
 
 ## **5. Ejemplos de código**
-Para mejor entendimiento de la codificación, usé los *"templates strings"* o plantillas laterales en español, de modo que me ayudaran con la estructura de las páginas y me permitieran la interpolación de expresiones pero también puede usarse el método "createElement()" para crear elementos HTML en JavaScript.
+Para mejor entendimiento de la codificación, usé los *"templates strings"* o plantillas literales en español, de modo que me ayudaran con la estructura de las páginas y me permitieran la interpolación de expresiones pero también puede usarse el método "createElement()" para crear elementos HTML en JavaScript.
 ```js
 //Estamos indicando que le vamos a dar una clase al nodo 'form' llamada 'form_info'
  const divForm = document.createElement('form');
@@ -75,7 +75,7 @@ Para mejor entendimiento de la codificación, usé los *"templates strings"* o p
 
 ## 6. Modelo responsivo
 
-<p alin="justify">Debido al avance de la tecnología y que casi el 89% de los usuarios a los que se les consultó sobre qué dispositivo utilizaban más, concordaron en que es el Smartphone es su compañero ideal para la interacción en páginas web, se hizo que el proyecto tenga <i>responsive model</i> por lo que es adaptable a cualquier pantalla ya sea móviles o tablets y también computadoras de mesa o laptops.</p>
+<p alin="justify">Debido al avance de la tecnología y que casi el 89% de los usuarios a los que se les consultó sobre qué dispositivo utilizaban más, concordaron en que el Smartphone es su compañero ideal para la interacción en páginas web, se hizo que el proyecto tenga <i>responsive model</i> por lo que es adaptable a cualquier pantalla ya sea móviles o tablets y también computadoras de mesa o laptops.</p>
 <p align="center"><img src="https://i.ibb.co/PxvYMy0/graphic1.jpg" width="400px" height="200px"></p>
 <p align="center"><img src="https://i.ibb.co/g6ZW2vw/mobile.png" width="300px" height="500px"></p>
 
