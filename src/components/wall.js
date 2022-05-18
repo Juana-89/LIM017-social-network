@@ -1,5 +1,3 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable no-undef */
 import { savePost, logout } from '../.firebase/auth.js';
 import { onGetSnapshot, updatePost, deletePost } from '../.firebase/controllers.js';
 import { getAuth, onAuthStateChanged } from '../.firebase/index.js';
