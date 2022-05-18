@@ -24,7 +24,7 @@ Tusuy es una palabra quechua que significa "Danzas" y Perú porque los bailes t�
 
 ## **2. Inicio del proyecto**
 
-<p align="justify">Tuve una idea de cómo podría iniciar la página y al comienzo consideré que podría ser a través de login pero luego consideré mejor idea que podía implementar una bienvenida al usuario dándole a entender de qué trataba la página con un botón de "Únete" por si el usuario tenía curiosidad de qué más seguía y lo plasmé en el prototipo de alta fidelidad. A continuación les comparto ambos prototipos realizados por mi:
+<p align="justify">Tuve una idea de cómo podría iniciar la página y al comienzo pensé que podría ser a través de login pero luego consideré mejor idea que podía implementar una bienvenida al usuario dándole a entender de qué trataba la página con un botón de "Únete" por si el usuario tenía curiosidad de qué más seguía y lo plasmé en el prototipo de alta fidelidad. A continuación les comparto ambos prototipos realizados por mi:
 <p align="center"><img src="https://i.ibb.co/1qgRnq7/proto-juana.jpg" width="400px" height="600px"></p>
 <p align="center"><i>Prototipo de baja fidelidad</i></p>
 <p align="center"><img src="https://i.ibb.co/19Tty8p/Captura-de-pantalla-2022-05-18-104648.jpg" width="600px" height="300px"></p>
