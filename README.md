@@ -76,9 +76,9 @@ Para mejor entendimiento de la codificación, usé los *"templates strings"* o p
 ## 6. Modelo responsivo
 
 <p alin="justify">Debido al avance de la tecnología y que casi el 89% de los usuarios a los que se les consultó sobre qué dispositivo utilizaban más, concordaron en que es el Smartphone es su compañero ideal para la interacción en páginas web, se hizo que el proyecto tenga <i>responsive model</i> por lo que es adaptable a cualquier pantalla ya sea móviles o tablets y también computadoras de mesa o laptops.</p>
-<center><img src="https://i.ibb.co/PxvYMy0/graphic1.jpg" width="400px" height="200px"></center>
-<center><img src="https://i.ibb.co/g6ZW2vw/mobile.png" width="300px" height="500px"></center>
+<p align="center"><img src="https://i.ibb.co/PxvYMy0/graphic1.jpg" width="400px" height="200px"></p>
+<p align="center"><img src="https://i.ibb.co/g6ZW2vw/mobile.png" width="300px" height="500px"></p>
 
-## 7. Fuentes de recursos externos
-Vídeo: PromPerú
+## 7. Fuentes
+Vídeo: PromPerú </ps>
 Iconos: FontAwesome.com / Flaticon.es
