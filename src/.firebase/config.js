@@ -1,5 +1,4 @@
 import { initializeApp } from '../.firebase/index.js';
-// import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBVeQvlxGrnQPSMtHDBANiwk-MTOvyNcb8',
@@ -13,5 +12,4 @@ const firebaseConfig = {
 
 // Inicializar Firebase
 export const app = initializeApp(firebaseConfig);
-// export const analytics = getAnalytics(app);
 

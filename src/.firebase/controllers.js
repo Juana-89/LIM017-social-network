@@ -35,11 +35,6 @@ export const sendEmailForgotPasswordFunction = (email) => {
     return sendPasswordResetEmail(auth, email);
 };
 
-export const onAuthStateChangedFunction = (state) => {
-    const user = auth.currentUser;
-    return onAuthStateChanged(auth, user)
-};
-
 // Ver datos de la bd
 export const getPosts = () => {
    return getDocs(collection(db, 'posts')) 
@@ -59,17 +54,6 @@ export const onGetSnapshot = (callback) => {
 export const savePostFunction = (post) => {
     setTimeout(() => {return addDoc(collection(db, '/posts'), { post: post })}, 1000);
 };
-
-//probando
-// export const savePostFunction = (post) => {
-//     setTimeout(() => {return addDoc(collection(db, '/posts'), { uid: getCurrentUser().uid,
-//         user: getCurrentUser().email,
-//         post: post,
-//         date: new date(),
-//         photo:getCurrentUser().photoURL,
-//         likes: [],
-//      })}, 1000);
-// };
 
 //Editar post del usuario
 export const updatePost = (id, newPost) => {
