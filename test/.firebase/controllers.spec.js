@@ -1,5 +1,5 @@
-import { loginGmailFunction, loginFacebookFunction, signInUserFunction, createNewUserFunction, sendEmailForgotPasswordFunction, logoutFunction } from '../../src/.firebase/controllers';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from '../../src/.firebase/index';
+import { loginGmailFunction, loginFacebookFunction, signInUserFunction, createNewUserFunction, sendEmailForgotPasswordFunction, logoutFunction  } from '../../src/.firebase/controllers';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut  } from '../../src/.firebase/index';
 
 jest.mock('.../../../src/.firebase/index');
 

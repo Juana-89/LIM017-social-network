@@ -14,37 +14,6 @@ describe('Probando login', () => {
   });
 });
 
-describe('Éxito al loguearse', () => {
-  fit('debería poder loguearse si tiene cuenta registrada', (done) => {
-    const signIn = jest.fn((email, password) => Promise.resolve({email,password}));
-    const success = login();
-    const btnLogin = success.querySelector('#btn_login_user');
-    const inpEmail = success.querySelector('#inp_email');
-    const inpPassword = success.querySelector('#inp_password');
-    inpEmail.value = 'juana@dominio.com';
-    inpPassword.value ='111111';
-    //const res = signInUser(inpEmail, inpPassword)
-    
-    btnLogin.dispatchEvent(new Event('click'));
-    setTimeout(() => {
-    signIn(inpEmail, inpPassword)
-      expect(onNavigate('/login')).toBe(success);
-    done();
-  //}));
- });
-  // const res = signInUser('email','password');
-  //   res.then(() =>{
-  //     console.log(res);
-  //     setTimeout(() => {
-  //     expect(signInWithEmailAndPassword.mock.calls[0][1]).toBe('email');
-  //     expect(signInWithEmailAndPassword.mock.calls[0][2]).toBe('password');
-  //     done();
-  //     });
-  //   },1000)
-
-},1000);
-});
-
 describe('Error al loguearse', () => {
   it('debería mostrar mensaje de error si no existe cuenta', () => {
     const signIn = jest.fn((email, password) => Promise.resolve({email,password}));

@@ -20,17 +20,3 @@ describe('Probando funciones/objetos', () => {
      expect(typeof validationForm).toBe('function');
     });
   });
-
-describe('ValidationForm', () => {
-    fit('debería ser un objeto', () => {
-    const success = register();
-    const inpEmail = success.querySelector('#inp_email');
-    //const divEmail = success.querySelector('#form_div_group_email').classList.add('form_group_info_user-correct');
-    inpEmail.value ='juana@dominio.com';
-    if (validationFields(expression, input, field)) {
-        success
-    }
-    (expressions.email, inpEmail.value);
-         
-    });
-});

@@ -1,6 +1,5 @@
 import { forgot } from '../../../src/components/forgot_password';
 import { login } from '../../../src/components/login';
-import { onNavigate } from '../../../src/main';
 import { sendEmailForgotPassword } from '../../../src/.firebase/index';
 
 jest.mock('.../../../src/.firebase/index');
@@ -31,8 +30,6 @@ describe('Vista de otras ventanas', () => {
     const loginView = document.querySelector('.show_home_page');
     const success = login();
     loginView.appendChild(success)
-    // const btnLogin = success.querySelector('#btn_forgot_password');
-    // btnLogin.dispatchEvent(new Event('click'));
     setTimeout(() => {
     expect(loginView.innerHTML);
     done();
@@ -42,13 +39,9 @@ describe('Vista de otras ventanas', () => {
 
 describe('Hacer click al botón', () => {
   it('debería hacer click en el botón de "Enviar correo de recuperación"', () => { 
-   // document.body.innerHTML = '<main class="show_home_page"></main>';
    const registerView = forgot();
-    const btnForgot = registerView.querySelector('#btn_submit1');
-    // const btnLogin = success.querySelector('#btn_forgot_password');
-    btnForgot.dispatchEvent(new Event('click'));
-    //setTimeout(() => {s
+   const btnForgot = registerView.querySelector('#btn_submit1');
+   btnForgot.dispatchEvent(new Event('click'));
     expect(sendEmailForgotPassword).toHaveBeenCalled
-    //});
   });
 });

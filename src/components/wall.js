@@ -99,7 +99,6 @@ export const wall = () => {
   const footer = document.createElement('footer');
   footer.classList.add('footer');
   footer.innerHTML = '©Red social - Tusuy Perú | Hecho por Juana Llanje para Laboratoria LIM017';
-  // <img class="img_footer" src="./media/logo.png" />
 
   divWall.appendChild(header);
   divWall.appendChild(cover);
@@ -126,8 +125,6 @@ export const wall = () => {
     //   const fileImage = document.querySelector('#file_photo_publication').files[0];
     //   console.log(storage, fileImage);
     // }
-    const divLoadImage = document.querySelector('#add_image_post');
-    console.log(divLoadImage);
   });
   divWall.querySelector('#add_publication').addEventListener('click', () => {
     savePost();
@@ -148,11 +145,6 @@ export const wall = () => {
     if (user !== null) {
       // muestra los datos del usuario ingresado
       user.providerData.forEach((profile) => {
-        console.log(`Sign-in provider: ${profile.providerId}`);
-        console.log(`  Provider-specific UID: ${profile.uid}`);
-        console.log(`  Name: ${profile.displayName}`);
-        console.log(`  Email: ${profile.email}`);
-        console.log(`  Photo URL: ${profile.photoURL}`);
         document.querySelector('#span_nom_id').innerHTML += (`${profile.uid}`);
         document.querySelector('#span_nom_user').innerHTML += (`${profile.displayName}`);
         document.querySelector('#span_email_user').innerHTML += (`${profile.email}`);
@@ -164,10 +156,9 @@ export const wall = () => {
         let articlePost = '';
 
         querySnapshot.forEach((doc) => {
-          // muestra los datos del usuario ingresado
+          // muestra los posts
           postContainer.innerHTML = '';
           const post = doc.data();
-          console.log(post);
           articlePost += ` <div class="add_info_publication_users"><h5>${post.post}</h5>
           <div class="div_btns_add_info">
           <button id="btn_like" class="btns_add_like"><i class="fa-solid fa-heart"></i></button><input type="number" id="inps_like" class="inps_add_like" value="0">
@@ -217,7 +208,6 @@ export const wall = () => {
             btnEdit.addEventListener('click', async (e) => {
               const docP = await getPost(e.target.dataset.id);
               const postP = docP.data();
-              console.log(post);
 
               postContainerEdit.value = postP.post;
               editStatus = true;
@@ -231,6 +221,7 @@ export const wall = () => {
                 if (editStatus) {
                   btnEditPostMain.style.display = 'block';
                   btnAddEditPost.style.display = 'none';
+
                   updatePost(id, { post: postContainerEdit.value });
                   Swal.fire({
                     titleText: 'Editado',

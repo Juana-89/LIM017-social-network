@@ -1,7 +1,6 @@
-import { signInGmail, signInFacebook, signInUser, createNewUser, sendEmailForgotPassword, logout } from '../../src/.firebase/auth';
+import { signInGmail, signInFacebook, signInUser, sendEmailForgotPassword, logout } from '../../src/.firebase/auth';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from '../../src/.firebase/index';
 import { signInUserFunction } from '../../src/.firebase/controllers'
-import { onNavigate } from '../../src/main';
 
 jest.mock('.../../../src/.firebase/index');
 
@@ -32,7 +31,7 @@ describe('Probando funciones de Auth', () => {
       .then(() => {
         expect(signInWithEmailAndPassword.mock.calls[0][1]).toStrictEqual('juana@dominio.com');
         expect(signInWithEmailAndPassword.mock.calls[0][2]).toStrictEqual('111111');
-        expect(alert('usuario registrado'));
+        expect(console.log('usuario registrado'));
       }));
 
       it('debería salir mensaje de error de ingresar datos incorrectos: signInUser', () =>  signInUserFunction('juana@dominio.com', '111111')     

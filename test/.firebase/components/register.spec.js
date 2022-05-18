@@ -11,27 +11,6 @@ describe('Probando register', () => {
     });
   });
 
-describe('Error al crear cuenta', () => {
-    fit('debería mostrar mensaje de error si algo está mal', () => {
-      const create = jest.fn((email, password) => Promise.resolve({email,password}));
-      const success = register();
-      const btnLogin = success.querySelector('#btn_submit');
-      const inpEmail = success.querySelector('#inp_email');
-      const inpPassword1 = success.querySelector('#inp_password1');
-      const inpPassword2 = success.querySelector('#inp_password2');
-      inpEmail.value = 'juana@dominio.com';
-      inpPassword1.value = '111111';
-      inpPassword2.value = '111111';
-
-      btnLogin.dispatchEvent(new Event('click'));
-      create(inpEmail, inpPassword1).catch((error) => {
-      setTimeout(() => {
-      expect(error).toEqual(createNewUser.mockRejectedValue('Auth/Password are wrong'));
-        });
-      });
-    });
-  });
-  
 describe('Validación de inputs', () => {
     it('debería mostrar mensaje de error si el email está mal ingresado', () => {
       const success = register();

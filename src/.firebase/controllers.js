@@ -1,7 +1,8 @@
 //Desacoplando funciones 
 import { getAuth, getFirestore, GoogleAuthProvider, FacebookAuthProvider, 
          signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, 
-         createUserWithEmailAndPassword, getDocs, onSnapshot, addDoc, collection, updateDoc, deleteDoc, getDoc, setDoc, doc, onAuthStateChanged, signOut, getStorage, ref } from '../.firebase/index.js';
+         createUserWithEmailAndPassword, getDocs, onSnapshot, addDoc, collection, updateDoc, deleteDoc, getDoc, doc, 
+         signOut, getStorage, ref } from '../.firebase/index.js';
 import { app } from '../.firebase/config.js';
 
 const auth = getAuth(app);
